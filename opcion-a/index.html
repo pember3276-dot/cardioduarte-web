@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>CARDIODUARTE · Cardiología y ecocardiografía</title>
+<title>CARDIODUARTE · Cardiología y ecocardiografía (opción A)</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,11 +228,24 @@ details.acc summary{min-height:52px}
   .hero .wrap{gap:32px}
   .doc .wrap{gap:28px}
 }
+
+/* chequeo destacado */
+.featured{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:var(--brand);color:var(--on-brand);border-radius:18px;padding:32px}
+.featured .eyebrow{color:color-mix(in srgb,var(--on-brand) 75%,var(--wood))}
+.featured h3{font-size:clamp(1.5rem,3vw,2rem)}
+.feat-copy{display:grid;gap:14px;justify-items:start}
+.feat-copy p{opacity:.88}
+.featured .btn-primary{background:var(--on-brand);color:var(--brand)}
+.incl{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.incl li{display:flex;gap:12px;align-items:flex-start;background:color-mix(in srgb,var(--on-brand) 10%,transparent);border-radius:12px;padding:12px 14px}
+.incl svg{flex:none;margin-top:3px;color:var(--wood)}
+.incl b{font-weight:600}
+@media (max-width:760px){.featured{grid-template-columns:1fr;padding:22px;gap:18px}.featured .btn{width:100%}}
 </style>
 </head>
 <body>
 
-<div class="demo"><div class="wrap"><strong>Versión demo para presentación.</strong> Datos de contacto tomados del portafolio. Lo marcado <span class="tag">Ejemplo</span> debe validarlo el consultorio antes de publicar.</div></div>
+<div class="demo"><div class="wrap"><strong>Opción A · versión demo.</strong> <a href="../opcion-b/" style="font-weight:700">Ver opción B →</a><br> Datos de contacto tomados del portafolio. Lo marcado <span class="tag">Ejemplo</span> debe validarlo el consultorio antes de publicar.</div></div>
 
 <header class="top"><div class="wrap">
   <a class="brand" href="#inicio" aria-label="CARDIODUARTE, inicio">
@@ -302,8 +315,20 @@ details.acc summary{min-height:52px}
       <h3>Holter de ritmo (24 a 48 h)</h3><p>Un pequeño equipo registra el ritmo del corazón mientras usted sigue su vida normal.</p><p class="for"><b>Útil si:</b> siente palpitaciones, mareos o ha tenido desmayos.</p></article>
     <article class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><path d="M12 13l3-3M12 3v3"/></svg></div>
       <h3>Monitoreo de presión arterial (MAPA)</h3><p>Mide la presión durante 24 horas en su entorno habitual, para un diagnóstico preciso de la hipertensión.</p><p class="for"><b>Útil si:</b> sus cifras varían mucho o se le sube la presión en consulta.</p></article>
-    <article class="svc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
-      <h3>Chequeo cardiovascular ejecutivo</h3><p>Evaluación integral y personalizada del riesgo cardiovascular, con los estudios que su caso necesite.</p><p class="for"><b>Útil si:</b> quiere prevenir y conocer el estado de su corazón.</p></article>
+  </div>
+  <div class="featured" id="chequeo">
+    <div class="feat-copy">
+      <span class="eyebrow">Para pacientes particulares</span>
+      <h3>Chequeo Ejecutivo Cardiovascular</h3>
+      <p>Una evaluación completa de su corazón en un solo programa, con los exámenes que su caso necesita y los resultados explicados por el especialista.</p>
+      <a class="btn btn-primary" href="#cita">Solicitar el chequeo</a>
+    </div>
+    <ul class="incl">
+      <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><b>Consulta especializada de cardiología</b></span></li>
+      <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><b>Ecocardiograma de estrés</b> con ejercicio o farmacológico, según el caso</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><b>Holter EKG de 24 horas</b></span></li>
+      <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span><b>Monitoreo ambulatorio de presión arterial (MAPA)</b></span></li>
+    </ul>
   </div>
 </div></section>
 
@@ -409,7 +434,7 @@ details.acc summary{min-height:52px}
       <div class="row2">
         <div class="field"><label for="f-servicio">Servicio</label>
           <select id="f-servicio" name="servicio">
-            <option>Consulta de cardiología</option><option selected>Ecocardiograma transtorácico</option><option>Ecocardiograma de estrés con ejercicio</option><option>Ecocardiograma de estrés farmacológico</option><option>Electrocardiograma</option><option>Prueba de esfuerzo</option><option>Holter de ritmo</option><option>Monitoreo de presión arterial (MAPA)</option><option>Chequeo cardiovascular ejecutivo</option><option>No estoy seguro, necesito orientación</option>
+            <option>Consulta de cardiología</option><option selected>Ecocardiograma transtorácico</option><option>Ecocardiograma de estrés con ejercicio</option><option>Ecocardiograma de estrés farmacológico</option><option>Electrocardiograma</option><option>Prueba de esfuerzo</option><option>Holter de ritmo</option><option>Monitoreo de presión arterial (MAPA)</option><option>Chequeo Ejecutivo Cardiovascular</option><option>No estoy seguro, necesito orientación</option>
           </select></div>
         <div class="field"><label for="f-cobertura">Forma de atención</label>
           <select id="f-cobertura" name="cobertura"><option>Particular</option><option selected>Medicina prepagada</option><option>Póliza de salud</option><option>No sé</option></select></div>
