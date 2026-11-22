@@ -211,7 +211,7 @@ ALT = {
 def demo_bar(n):
     links = " ".join(
         f'<a href="../opcion-{k}/index.html"{" aria-current=" + chr(34) + "page" + chr(34) if k == n else ""}>{k}</a>'
-        for k in OPCIONES)
+        for k in OPCIONES) + ' <a href="../opcion-a/index.html">4</a>'
     return (f'<div class="demo"><div class="demo-in"><span><strong>Opción {n} · {OPCIONES[n]}.</strong>'
             f'<span class="demo-txt"> Versión demo: lo marcado {tag()} se valida con el consultorio.</span></span>'
             f'<nav class="demo-nav" aria-label="Cambiar de propuesta">Ver opción {links} <a href="../index.html">Todas</a></nav></div></div>')
