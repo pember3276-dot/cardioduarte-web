@@ -41,6 +41,29 @@
     });
   }
 
+
+  /* Contadores (cifras que suben al aparecer) */
+  var nums = document.querySelectorAll('[data-count]');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, to = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', t0 = null;
+        co.unobserve(el);
+        (function step(t) { t0 = t0 || t; var k = Math.min(1, (t - t0) / 1100); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(step); })(performance.now());
+      });
+    }, { threshold: 0.4 });
+    nums.forEach(function (n) { co.observe(n); });
+  }
+
+  /* Acordeones de un solo elemento abierto */
+  document.querySelectorAll('details[data-acc]').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      document.querySelectorAll('details[data-acc="' + d.getAttribute('data-acc') + '"]').forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
   /* Preseleccionar servicio */
   document.querySelectorAll('[data-servicio]').forEach(function (a) {
     a.addEventListener('click', function () {
