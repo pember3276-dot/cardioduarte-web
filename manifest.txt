@@ -23,8 +23,6 @@ assets/img/v-esfuerzo.jpg
 assets/img/v-esfuerzo.webp
 assets/img/v-letrero.jpg
 assets/img/v-letrero.webp
-assets/img/v-torre.jpg
-assets/img/v-torre.webp
 assets/js/sitio.js
 cardiologo-medellin/index.html
 chequeo-ejecutivo-cardiovascular-medellin/index.html
