@@ -344,7 +344,7 @@ def doctor():
 
 
 def pagina_404():
-    datos.R = "/cardioduarte-web/" if "github.io" in SITE else "/"
+    datos.R = "/" if datos.INDEXABLE else "/cardioduarte-web/"
     datos.META = {"path": "404.html", "title": "Página no encontrada | CARDIODUARTE",
                   "desc": "La página que busca no existe. Vuelva al inicio de CARDIODUARTE.", "ld": {}}
     html = page(f"""<section class="sec"><div class="wrap head-center nf">{chip("Error 404")}<h1>No encontramos esta página</h1>
@@ -364,8 +364,51 @@ def limpiar_datos():
         tgt["FAQ"], tgt["CRED"] = faq, cred
 
 
-def main():
+HTACCESS = """# CARDIODUARTE · www.cardioduarte.com (Hostinger)
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# Siempre https y siempre con www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\\. [NC]
+RewriteRule ^ https://www.cardioduarte.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/html "access plus 0 seconds"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType image/webp "access plus 6 months"
+ExpiresByType image/jpeg "access plus 6 months"
+ExpiresByType image/png "access plus 6 months"
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>
+"""
+
+
+def generar(destino):
+    """destino "github": copia de muestra en la raíz del repo (noindex).
+    destino "hostinger": web oficial indexable en dist/hostinger/, lista para subir a public_html."""
+    import re
+    import shutil
+    oficial = destino == "hostinger"
+    base = ROOT / "dist" / "hostinger" if oficial else ROOT
+    if oficial and base.exists():
+        shutil.rmtree(base)
     datos.PROD = True
+    datos.INDEXABLE = oficial
     limpiar_datos()
     out = {"index.html": portada()}
     for t in KW:
@@ -374,14 +417,31 @@ def main():
     out[f"{DOC_SLUG}/index.html"] = doctor()
     out["404.html"] = pagina_404()
     for rel, html in out.items():
-        f = ROOT / rel
+        f = base / rel
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(html, encoding="utf-8")
-        print("ok", rel)
-    urls = [""] + [p[:-len("index.html")] for p in out if p.endswith("/index.html")]
-    sm = "".join(f"<url><loc>{SITE}/{u}</loc><lastmod>{HOY}</lastmod><priority>{'1.0' if not u else '0.8'}</priority></url>\n" for u in urls)
-    (ROOT / "sitemap.xml").write_text(
-        f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sm}</urlset>\n', encoding="utf-8")
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    print(f"ok {destino}: {len(out)} páginas")
+    if oficial:
+        urls = [""] + [p[:-len("index.html")] for p in out if p.endswith("/index.html")]
+        sm = "".join(f"<url><loc>{SITE}/{u}</loc><lastmod>{HOY}</lastmod><priority>{'1.0' if not u else '0.8'}</priority></url>\n" for u in urls)
+        (base / "sitemap.xml").write_text(
+            f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sm}</urlset>\n', encoding="utf-8")
+        (base / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+        (base / ".htaccess").write_text(HTACCESS, encoding="utf-8")
+        # solo los recursos que usa la web oficial
+        usados = set()
+        for html in out.values():
+            usados |= set(re.findall(r'assets/img/([\w.-]+)', html))
+        for c in ("comun.css", "opcion-1.css"):
+            usados |= set(re.findall(r"img/([\w.-]+)", (ROOT / "assets/css" / c).read_text()))
+        for rel in ["assets/css/comun.css", "assets/css/opcion-1.css", "assets/js/sitio.js"] + [f"assets/img/{n}" for n in sorted(usados)]:
+            (base / rel).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / rel, base / rel)
     datos.PROD = False
+    datos.INDEXABLE = True
     datos.R = "../"
+
+
+def main():
+    generar("github")
+    generar("hostinger")
