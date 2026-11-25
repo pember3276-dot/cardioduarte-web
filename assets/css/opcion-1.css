@@ -259,6 +259,12 @@ blockquote{margin:0;font:400 1.25rem/1.45 var(--fd);color:var(--head);padding-le
 .formcard{background:var(--white);border-radius:30px;padding:clamp(22px,3.4vw,36px);display:grid;gap:16px;box-shadow:0 30px 60px rgba(22,78,120,.08);border:1px solid var(--line)}
 .formcard h2{font-size:clamp(1.6rem,2.8vw,2.1rem)}
 .btn-submit{justify-self:start;border:0}
+.online-book{display:grid;gap:8px;justify-items:start;padding:18px 20px;border-radius:20px;background:var(--teal-xl);border:1px solid var(--teal-l)}
+.online-book b{font-size:1.1rem;color:var(--head)}
+.online-book p{margin:0;color:var(--muted)}
+.online-book .dl-widget{width:100%}
+.online-book .btn{max-width:100%;white-space:normal;text-align:left}
+.formcard{min-width:0}
 @media (max-width:900px){.visit{grid-template-columns:1fr}}
 
 /* llamado final */

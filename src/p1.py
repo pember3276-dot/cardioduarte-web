@@ -14,6 +14,16 @@ def btn(t, href="#cita", kind="primary", extra=""):
     return f'<a class="btn btn-{kind}" href="{href}"{extra}><span>{t}</span><i>{PLUS}</i></a>'
 
 
+def reserva_online():
+    """Reserva en línea en la agenda de Doctoralia (agenda maestra: evita que se crucen citas)."""
+    widget = f'<div class="dl-widget">{DOCTORALIA_WIDGET}</div>' if DOCTORALIA_WIDGET else ""
+    return f"""<div class="online-book">
+      <b>¿Prefiere elegir usted el día y la hora?</b>
+      <p>Vea los horarios disponibles del Dr. Duarte y reserve en línea, sin esperar respuesta.</p>
+      {widget}<a class="btn btn-primary" href="{DOCTORALIA}" target="_blank" rel="noopener" data-canal="doctoralia"><span>Reservar en línea en Doctoralia</span><i>{ic("arrow", 14, 2.2)}</i></a>
+    </div>"""
+
+
 def page():
     nav = "".join(f'<a href="{nav_href(h)}">{t}</a>' for h, t in NAV)
     big = SERVICIOS[:2]
@@ -113,7 +123,7 @@ def page():
   <div class="head-row">
     <div>{chip("Su cita")}<h2>Agendar una cita es sencillo</h2>
     <p class="lead">Le acompañamos desde el primer mensaje hasta la entrega de su resultado, explicado por el especialista.</p></div>
-    {btn("Escribir por WhatsApp", WA, "primary", ' target="_blank" rel="noopener"')}
+    <div class="ctas">{btn("Reservar en línea", DOCTORALIA, "primary", ' target="_blank" rel="noopener" data-canal="doctoralia"')}{btn("Escribir por WhatsApp", WA, "ghost", ' target="_blank" rel="noopener"')}</div>
   </div>
   <ol class="steps">{pasos}</ol>
 </div></section>
@@ -200,7 +210,9 @@ def page():
     </ul>
     {mapa()}
   </div>
-  <div class="formcard" id="cita"><span class="chip">{ic("star", 12, 2)}Solicitud de cita</span><h2>Déjenos sus datos y le contactamos</h2>
+  <div class="formcard" id="cita"><span class="chip">{ic("star", 12, 2)}Solicitud de cita</span>
+    {reserva_online()}
+    <h2>O déjenos sus datos y le contactamos</h2>
     {form("btn btn-primary btn-submit", f"<i>{PLUS}</i>")}</div>
 </div></section>
 
