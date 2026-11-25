@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://pember3276-dot.github.io/cardioduarte-web/sitemap.xml
