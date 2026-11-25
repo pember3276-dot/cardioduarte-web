@@ -194,6 +194,7 @@ def org():
         "address": {"@type": "PostalAddress", "streetAddress": f"{DIR2}, {DIR1}", "addressLocality": "Medellín",
                     "addressRegion": "Antioquia", "addressCountry": "CO"},
         "hasMap": datos.MAPS.replace("&amp;", "&"),
+        "geo": {"@type": "GeoCoordinates", "latitude": datos.LAT, "longitude": datos.LNG},
         "sameAs": ["https://wa.me/573187984545"],
     }
 

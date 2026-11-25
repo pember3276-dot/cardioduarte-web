@@ -12,11 +12,12 @@ WEB = "www.CARDIODUARTE.com"
 DIR1 = "Torre Médica Metropolitan Salud"
 DIR2 = "Calle 33 n.º 43-85, consultorio 1325"
 DIR3 = "Avenida El Poblado antes de San Diego, frente a la estación de Metroplús. Medellín."
-# Cómo llegar. Cuando la ficha de Google Business quede aprobada, poner su enlace en MAPS.
+# Cómo llegar: MAPS abre la ficha de Google "CARDIODUARTE" (enlace estable por CID).
+LAT, LNG = 6.2338043, -75.5699073
 _Q = "Torre%20M%C3%A9dica%20Metropolitan%20Salud%2C%20Calle%2033%20%2343-85%2C%20Medell%C3%ADn"
-MAPS = f"https://www.google.com/maps/search/?api=1&amp;query={_Q}"
+MAPS = "https://maps.google.com/?cid=16402717702183196358"
 MAPS_EMBED = f"https://www.google.com/maps?q={_Q}&amp;output=embed&amp;hl=es"
-WAZE = f"https://waze.com/ul?q={_Q}&amp;navigate=yes"
+WAZE = f"https://waze.com/ul?ll={LAT},{LNG}&amp;navigate=yes"
 LINKEDIN = ""   # perfil de LinkedIn del Dr. Duarte (pendiente: pedir el enlace exacto a Daniel)
 MINSALUD = "https://prestadores.minsalud.gov.co/habilitacion/consultadistintivo_dhss.aspx"
 DOCTOR = "Dr. Néstor Ricardo Duarte Suárez"
