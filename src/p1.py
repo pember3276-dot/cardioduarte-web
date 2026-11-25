@@ -1,5 +1,6 @@
 """Opción 1 · Clínica moderna y profesional (estructura inspirada en la referencia Clinqora)."""
 from datos import *
+import datos as D
 
 FONTS = "family=Geist:wght@400;500;600&family=Inter:wght@400;500;600"
 PLUS = ic("plus", 16, 2.2)
@@ -14,7 +15,7 @@ def btn(t, href="#cita", kind="primary", extra=""):
 
 
 def page():
-    nav = "".join(f'<a href="{h}">{t}</a>' for h, t in NAV)
+    nav = "".join(f'<a href="{nav_href(h)}">{t}</a>' for h, t in NAV)
     big = SERVICIOS[:2]
     small = [SERVICIOS[2], SERVICIOS[5], SERVICIOS[4]]
     rest = [SERVICIOS[3], SERVICIOS[6], SERVICIOS[7]]
@@ -24,11 +25,11 @@ def page():
     def photo_card(s, cls):
         k, t, d, u, img = s
         return (f'<article class="pcard {cls} reveal">{pic(img, ALT[img], pos=POS.get(img))}<div class="glass">'
-                f'<div><h3>{t}</h3><p>{d}</p></div><a class="pc-plus" href="#cita" data-servicio="{t}" aria-label="Agendar {t}">{PLUS}</a></div></article>')
+                f'<div><h3>{slink(t)}</h3><p>{d}</p></div><a class="pc-plus" href="#cita" data-servicio="{t}" aria-label="Agendar {t}">{PLUS}</a></div></article>')
 
     def mini_card(s):
         k, t, d, u, img = s
-        return (f'<article class="mcard reveal"><div class="mc-ic">{ic(k)}</div><div><h3>{t}</h3><p>{d}</p>'
+        return (f'<article class="mcard reveal"><div class="mc-ic">{ic(k)}</div><div><h3>{slink(t)}</h3><p>{d}</p>'
                 f'<p class="u"><b>Útil si:</b> {u}</p></div></article>')
 
     razones = "".join(
@@ -50,7 +51,13 @@ def page():
     faq = "".join(
         f'<details class="qa"{" open" if i == 0 else ""} data-acc="faq"><summary><h3>{q}</h3><i>{PLUS}</i></summary><p>{a}</p></details>'
         for i, (q, a) in enumerate(FAQ))
-    cred = "".join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in CRED)
+    cred = "".join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in CRED
+                   if not (D.PROD and a in ("Formación", "Registro médico")))
+    quote = "" if D.PROD else f"<blockquote>“{QUOTE}” {tag()}</blockquote>"
+    note = "" if D.PROD else f'<span class="pill-note">{ic("alert", 16, 2)}Ejemplo · validar con el Dr. Duarte</span>'
+    esp_lead = ("Conozca quién le atiende." if D.PROD else "Conozca quién le atiende. Los datos marcados se completan con el consultorio.")
+    doc_btn = btn("Conocer al doctor", f"{D.R}{DOC_SLUG}/", "ghost") if D.PROD else ""
+    chq_btn = btn("Ver el chequeo", f"{D.R}{SLUG['Chequeo Ejecutivo Cardiovascular']}/", "ghost") if D.PROD else ""
     hab = "".join(
         f'<figure class="dist reveal">{pic(img, "Distintivo de habilitación " + c)}<figcaption><small>{g}</small><b>{t}</b><span>{c}</span></figcaption></figure>'
         for g, t, c, img in HAB)
@@ -66,7 +73,7 @@ def page():
 <main id="contenido">
 <section class="hero" id="inicio"><div class="wrap hero-grid">
   <div class="hero-copy">
-    {chip("Atención directa del especialista")}
+    {chip("Cardiólogo en Medellín · El Poblado" if D.PROD else "Atención directa del especialista")}
     <h1>{H1}</h1>
     <p class="lead">{LEAD}</p>
     <div class="ctas">{btn("Agendar una cita")}{btn("Ver servicios", "#servicios", "ghost")}</div>
@@ -98,7 +105,7 @@ def page():
       <li><i>{ic("check", 14, 2.4)}</i>Resultados que usted pueda entender</li>
       <li><i>{ic("check", 14, 2.4)}</i>Particulares, pólizas y medicina prepagada</li>
     </ul>
-    <blockquote>“{QUOTE}” {tag()}</blockquote>
+    {quote}{doc_btn}
   </div>
 </div></section>
 
@@ -129,7 +136,7 @@ def page():
 <section class="wrap" id="prevencion"><div class="panel">
   <div class="head-center">{chip("Prevención", True)}<h2>Pequeños hábitos que cuidan su corazón</h2>
     <p class="lead">Recomendaciones generales de salud cardiovascular. No reemplazan la valoración médica ni las indicaciones de su médico tratante.</p>
-    <span class="pill-note">{ic("alert", 16, 2)}Ejemplo · validar con el Dr. Duarte</span></div>
+    {note}</div>
   <div class="tgrid">{prev}</div>
   <div class="alarm reveal"><span>{ic("alert", 22, 2)}</span><div><h3>Señales de alarma: no espere una cita</h3><p>{ALARMA}</p></div></div>
 </div></section>
@@ -143,14 +150,14 @@ def page():
       <figure class="diff-media reveal">{pic("v-letrero", ALT["v-letrero"], pos="50% 72%")}</figure>
     </div>
     <div class="ggrid">{chequeo}
-      <div class="gcta">{btn("Solicitar el chequeo", "#cita", "primary", ' data-servicio="Chequeo Ejecutivo Cardiovascular"')}</div></div>
+      <div class="gcta">{btn("Solicitar el chequeo", "#cita", "primary", ' data-servicio="Chequeo Ejecutivo Cardiovascular"')}{chq_btn}</div></div>
   </div>
 </div></section>
 
 <section class="sec sec-alt"><div class="wrap">
   <div class="head-row">
     <div>{chip("Su especialista")}<h2>Formación y experiencia</h2>
-    <p class="lead">Conozca quién le atiende. Los datos marcados se completan con el consultorio.</p></div>
+    <p class="lead">{esp_lead}</p></div>
   </div>
   <div class="team">
     <article class="tm reveal">{pic("v-consulta", ALT["v-consulta"], pos="50% 80%")}<div class="tm-b"><span class="bchip">Cardiología</span><h3>{DOCTOR}</h3><p>Cardiólogo ecocardiografista</p></div></article>
@@ -209,8 +216,8 @@ def page():
   <div class="fcols">
     <div class="fbrand"><a class="brand" href="#inicio"><span class="logo"><i class="mark"></i></span><b>CARDIODUARTE</b></a>
       <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p></div>
-    <nav aria-label="Enlaces"><b>Enlaces</b>{nav}<a href="#cita">Agendar cita</a></nav>
-    <nav aria-label="Servicios"><b>Servicios</b>{"".join(f'<a href="#servicios">{s[1]}</a>' for s in SERVICIOS[:5])}</nav>
+    <nav aria-label="Enlaces"><b>Enlaces</b>{nav}{f'<a href="{D.R}{DOC_SLUG}/">{DOCTOR}</a><a href="{D.R}{SLUG["Chequeo Ejecutivo Cardiovascular"]}/">Chequeo Ejecutivo</a>' if D.PROD else ""}<a href="#cita">Agendar cita</a></nav>
+    <nav aria-label="Servicios"><b>Servicios</b>{"".join(f'<a href="{D.R + SLUG[s[1]] + "/" if D.PROD else "#servicios"}">{s[1]}</a>' for s in (SERVICIOS if D.PROD else SERVICIOS[:5]))}</nav>
     <div><b>Visítenos</b><span>{DIR1}, {DIR2}, Medellín</span><a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}

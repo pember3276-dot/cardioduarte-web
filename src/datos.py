@@ -24,7 +24,18 @@ BIO = ("Cardiólogo y ecocardiografista con más de 15 años de trayectoria en e
 QUOTE = "Cada paciente merece entender qué tiene su corazón y qué podemos hacer juntos."
 
 
+# Modo de generación. Las propuestas (demo) usan R="../" y PROD=False.
+# La web publicada (src/sitio.py) cambia estos valores antes de generar cada página.
+R = "../"          # prefijo hasta la raíz del sitio
+PROD = False       # True: web real (sin barra demo, sin marcas "Ejemplo", formulario vacío)
+SITE = "https://pember3276-dot.github.io/cardioduarte-web"   # cambiar a https://www.cardioduarte.com cuando el dominio apunte
+GTM_ID = ""        # ID de Google Tag Manager (GTM-XXXXXXX) cuando esté disponible
+META = {}          # título, descripción, ruta canónica y JSON-LD de la página en curso
+
+
 def tag(t="Ejemplo"):
+    if PROD:
+        return ""
     return f'<span class="tag">{t}</span>'
 
 
@@ -168,6 +179,27 @@ HAB = [
     ("Apoyo diagnóstico", "745 · Imágenes diagnósticas no ionizantes", "DHSS0948334", "dist-imagenes"),
 ]
 
+# Micrositios de la web publicada: título del servicio -> ruta
+SLUG = {
+    "Consulta de cardiología": "cardiologo-medellin",
+    "Ecocardiograma transtorácico": "ecocardiograma-medellin",
+    "Ecocardiograma de estrés con ejercicio": "ecocardiograma-estres-ejercicio-medellin",
+    "Ecocardiograma de estrés farmacológico": "ecocardiograma-estres-farmacologico-medellin",
+    "Electrocardiograma": "electrocardiograma-medellin",
+    "Prueba de esfuerzo": "prueba-de-esfuerzo-medellin",
+    "Holter de ritmo (24 a 48 h)": "holter-medellin",
+    "Monitoreo de presión arterial (MAPA)": "mapa-presion-arterial-medellin",
+    "Chequeo Ejecutivo Cardiovascular": "chequeo-ejecutivo-cardiovascular-medellin",
+}
+DOC_SLUG = "dr-nestor-ricardo-duarte-suarez"
+
+
+def slink(t, inner=None):
+    """En la web publicada, enlaza el nombre del servicio a su micrositio."""
+    inner = inner or t
+    return f'<a class="slink" href="{R}{SLUG[t]}/">{inner}</a>' if PROD and t in SLUG else inner
+
+
 NAV = [("#doctor", "El doctor"), ("#servicios", "Servicios"), ("#prevencion", "Prevención"),
        ("#preparacion", "Preparación"), ("#ubicacion", "Ubicación")]
 
@@ -189,8 +221,8 @@ def pic(name, alt, cls="", eager=False, pos=None):
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
     st = f' style="object-position:{pos}"' if pos else ""
     c = f' class="{cls}"' if cls else ""
-    return (f'<picture{c}><source srcset="../assets/img/{name}.webp" type="image/webp">'
-            f'<img src="../assets/img/{name}.jpg" alt="{alt}" {load}{st}></picture>')
+    return (f'<picture{c}><source srcset="{R}assets/img/{name}.webp" type="image/webp">'
+            f'<img src="{R}assets/img/{name}.jpg" alt="{alt}" {load}{st}></picture>')
 
 
 ALT = {
@@ -214,10 +246,12 @@ def demo_bar(n):
         for k in OPCIONES) + ' <a href="../opcion-a/index.html">4</a>'
     return (f'<div class="demo"><div class="demo-in"><span><strong>Opción {n} · {OPCIONES[n]}.</strong>'
             f'<span class="demo-txt"> Versión demo: lo marcado {tag()} se valida con el consultorio.</span></span>'
-            f'<nav class="demo-nav" aria-label="Cambiar de propuesta">Ver opción {links} <a href="../index.html">Todas</a></nav></div></div>')
+            f'<nav class="demo-nav" aria-label="Cambiar de propuesta">Ver opción {links} <a href="../propuestas/">Todas</a></nav></div></div>')
 
 
 def head(n, fonts, color):
+    if PROD:
+        return head_prod(n, fonts, color)
     return f"""<!doctype html>
 <html lang="es" class="t{n}">
 <head>
@@ -241,30 +275,40 @@ def head(n, fonts, color):
 """
 
 
-def form(btn_class="btn btn-primary", btn_extra=""):
-    opts = "".join(f"<option{' selected' if i == 1 else ''}>{s[1]}</option>" for i, s in enumerate(SERVICIOS))
+def form(btn_class="btn btn-primary", btn_extra="", sel=None):
+    sel = sel or (None if PROD else SERVICIOS[1][1])
+    opts = "".join(f"<option{' selected' if s[1] == sel else ''}>{s[1]}</option>" for s in SERVICIOS)
+    extra = "".join(f"<option{' selected' if o == sel else ''}>{o}</option>" for o in ("Chequeo Ejecutivo Cardiovascular", "No estoy seguro, necesito orientación"))
+    v = (lambda x: "") if PROD else (lambda x: f' value="{x}"')
+    msg = "" if PROD else "Tengo orden médica para ecocardiograma."
+    fine = ("Le respondemos en horario de atención." if PROD
+            else "Datos de ejemplo precargados para la demostración. Le respondemos en horario de atención.")
+    okp = ("Para terminar, envíe su solicitud por WhatsApp: el mensaje ya va escrito con sus datos y llega directo al consultorio." if PROD
+           else "En la web real, esta solicitud llega al consultorio y queda registrada con su origen (web) para el seguimiento. Si prefiere, continúe la conversación por WhatsApp.")
+    okb = "Ya casi" if PROD else "Recibimos su solicitud"
+    cob = "" if PROD else " selected"
     return f"""<form class="cita" id="form-cita" novalidate>
       <div class="row2">
-        <div class="field"><label for="f-nombre">Nombre completo</label><input id="f-nombre" name="nombre" autocomplete="name" value="María Fernanda Restrepo" aria-describedby="e-nombre"><span class="err" id="e-nombre" aria-live="polite"></span></div>
-        <div class="field"><label for="f-tel">Celular</label><input id="f-tel" name="tel" inputmode="tel" autocomplete="tel" value="300 123 4567" aria-describedby="e-tel"><span class="err" id="e-tel" aria-live="polite"></span></div>
+        <div class="field"><label for="f-nombre">Nombre completo</label><input id="f-nombre" name="nombre" autocomplete="name" {v("María Fernanda Restrepo")} aria-describedby="e-nombre"><span class="err" id="e-nombre" aria-live="polite"></span></div>
+        <div class="field"><label for="f-tel">Celular</label><input id="f-tel" name="tel" inputmode="tel" autocomplete="tel" {v("300 123 4567")} placeholder="300 123 4567" aria-describedby="e-tel"><span class="err" id="e-tel" aria-live="polite"></span></div>
       </div>
       <div class="row2">
         <div class="field"><label for="f-servicio">Servicio</label>
-          <select id="f-servicio" name="servicio">{opts}<option>Chequeo Ejecutivo Cardiovascular</option><option>No estoy seguro, necesito orientación</option></select></div>
+          <select id="f-servicio" name="servicio">{opts}{extra}</select></div>
         <div class="field"><label for="f-cobertura">Forma de atención</label>
-          <select id="f-cobertura" name="cobertura"><option>Particular</option><option selected>Medicina prepagada</option><option>Póliza de salud</option><option>No sé</option></select></div>
+          <select id="f-cobertura" name="cobertura"><option>Particular</option><option{cob}>Medicina prepagada</option><option>Póliza de salud</option><option>No sé</option></select></div>
       </div>
       <div class="field"><label for="f-franja">¿Cuándo le queda mejor?</label>
         <select id="f-franja" name="franja"><option>Mañana (7 a 12)</option><option>Tarde (1 a 5)</option><option>Cualquier horario</option></select></div>
-      <div class="field"><label for="f-msg">Mensaje (opcional)</label><textarea id="f-msg" name="msg" rows="3">Tengo orden médica para ecocardiograma.</textarea></div>
+      <div class="field"><label for="f-msg">Mensaje (opcional)</label><textarea id="f-msg" name="msg" rows="3">{msg}</textarea></div>
       <label class="check" for="f-ok"><input type="checkbox" id="f-ok" name="ok"><span>Autorizo el tratamiento de mis datos personales según la <a href="#politica">política de tratamiento de datos</a>, para gestionar mi cita.</span></label>
       <span class="err" id="e-ok" aria-live="polite"></span>
       <button class="{btn_class}" type="submit">Enviar solicitud{btn_extra}</button>
-      <p class="fine">Datos de ejemplo precargados para la demostración. Le respondemos en horario de atención.</p>
+      <p class="fine">{fine}</p>
       <div class="ok" id="ok" hidden tabindex="-1">
-        <b>Recibimos su solicitud, <span id="ok-name"></span>.</b>
-        <p>En la web real, esta solicitud llega al consultorio y queda registrada con su origen (web) para el seguimiento. Si prefiere, continúe la conversación por WhatsApp.</p>
-        <a class="btn btn-wa" id="ok-wa" href="#" target="_blank" rel="noopener">{WA_ICON}Continuar por WhatsApp</a>
+        <b>{okb}, <span id="ok-name"></span>.</b>
+        <p>{okp}</p>
+        <a class="btn btn-wa" id="ok-wa" href="#" target="_blank" rel="noopener">{WA_ICON}{"Enviar por WhatsApp" if PROD else "Continuar por WhatsApp"}</a>
       </div>
     </form>"""
 
@@ -276,12 +320,12 @@ def menu_btn():
 
 def mnav():
     return '<nav class="mnav" id="mnav" aria-label="Menú móvil" hidden>' + "".join(
-        f'<a href="{h}">{t}</a>' for h, t in NAV) + '<a href="#cita" class="mnav-cta">Agendar cita</a></nav>'
+        f'<a href="{nav_href(h)}">{t}</a>' for h, t in NAV) + '<a href="#cita" class="mnav-cta">Agendar cita</a></nav>'
 
 
 def tail():
     return f"""<a class="wa-float" href="{WA}" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">{WA_ICON}<span>WhatsApp</span></a>
-<script src="../assets/js/sitio.js" defer></script>
+<script src="{R}assets/js/sitio.js" defer></script>
 </body>
 </html>
 """
@@ -292,3 +336,57 @@ def politica_details():
     <summary>Política de tratamiento de datos personales {tag('Ejemplo · revisión jurídica')}</summary>
     <div class="policy">{POLITICA}</div>
   </details>"""
+
+
+def nav_href(h):
+    """Enlaces del menú: anclas en la portada; desde un micrositio, vuelven a la portada."""
+    return R + h if PROD and R else h
+
+
+def head_prod(n, fonts, color):
+    """<head> de la web publicada: SEO, Open Graph, datos estructurados y Tag Manager."""
+    import json
+    m = META
+    url = f"{SITE}/{m.get('path', '')}"
+    ld = json.dumps(m.get("ld", {}), ensure_ascii=False, separators=(",", ":"))
+    gtm = ""
+    gtm_body = ""
+    if GTM_ID:
+        gtm = ("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
+               "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
+               f"j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{GTM_ID}');</script>")
+        gtm_body = (f'<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}" height="0" width="0" '
+                    'style="display:none;visibility:hidden"></iframe></noscript>')
+    return f"""<!doctype html>
+<html lang="es-CO" class="t{n}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{gtm}
+<title>{m['title']}</title>
+<meta name="description" content="{m['desc']}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{url}">
+<meta name="theme-color" content="{color}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="CARDIODUARTE">
+<meta property="og:title" content="{m['title']}">
+<meta property="og:description" content="{m['desc']}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/assets/img/{m.get('img', 'dr-duarte')}.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="CO-ANT">
+<meta name="geo.placename" content="Medellín">
+<link rel="icon" href="{R}assets/img/logo-corazon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{fonts}&display=swap">
+<link rel="stylesheet" href="{R}assets/css/comun.css">
+<link rel="stylesheet" href="{R}assets/css/opcion-{n}.css">
+<script type="application/ld+json">{ld}</script>
+</head>
+<body>
+{gtm_body}
+<a class="skip" href="#contenido">Saltar al contenido</a>
+"""
