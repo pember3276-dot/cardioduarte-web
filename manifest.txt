@@ -1,4 +1,3 @@
-.git
 .htaccess
 404.html
 assets/css/comun.css
