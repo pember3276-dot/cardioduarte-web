@@ -30,6 +30,7 @@ dr-nestor-ricardo-duarte-suarez/index.html
 ecocardiograma-estres-ejercicio-medellin/index.html
 ecocardiograma-estres-farmacologico-medellin/index.html
 ecocardiograma-medellin/index.html
+ee8c76129b0867a01def5baa5347ea1e.txt
 electrocardiograma-medellin/index.html
 holter-medellin/index.html
 index.html
