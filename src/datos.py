@@ -29,7 +29,7 @@ QUOTE = "Cada paciente merece entender qué tiene su corazón y qué podemos hac
 R = "../"          # prefijo hasta la raíz del sitio
 PROD = False       # True: web real (sin barra demo, sin marcas "Ejemplo", formulario vacío)
 SITE = "https://pember3276-dot.github.io/cardioduarte-web"   # cambiar a https://www.cardioduarte.com cuando el dominio apunte
-GTM_ID = ""        # ID de Google Tag Manager (GTM-XXXXXXX) cuando esté disponible
+GTM_ID = "GTM-MGXBRJTH"        # ID de Google Tag Manager (GTM-XXXXXXX) cuando esté disponible
 META = {}          # título, descripción, ruta canónica y JSON-LD de la página en curso
 
 
