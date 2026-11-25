@@ -18,7 +18,7 @@ _Q = "Torre%20M%C3%A9dica%20Metropolitan%20Salud%2C%20Calle%2033%20%2343-85%2C%2
 MAPS = "https://maps.google.com/?cid=16402717702183196358"
 MAPS_EMBED = f"https://www.google.com/maps?q={_Q}&amp;output=embed&amp;hl=es"
 WAZE = f"https://waze.com/ul?ll={LAT},{LNG}&amp;navigate=yes"
-LINKEDIN = ""   # perfil de LinkedIn del Dr. Duarte (pendiente: pedir el enlace exacto a Daniel)
+LINKEDIN = "https://www.linkedin.com/in/n%C3%A9stor-ricardo-duarte-suarez-62421959/"
 MINSALUD = "https://prestadores.minsalud.gov.co/habilitacion/consultadistintivo_dhss.aspx"
 DOCTOR = "Dr. Néstor Ricardo Duarte Suárez"
 H1 = "Cuidamos su corazón con tiempo, cercanía y un diagnóstico claro."
