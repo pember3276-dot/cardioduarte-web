@@ -28,7 +28,8 @@ QUOTE = "Cada paciente merece entender qué tiene su corazón y qué podemos hac
 # La web publicada (src/sitio.py) cambia estos valores antes de generar cada página.
 R = "../"          # prefijo hasta la raíz del sitio
 PROD = False       # True: web real (sin barra demo, sin marcas "Ejemplo", formulario vacío)
-SITE = "https://pember3276-dot.github.io/cardioduarte-web"   # cambiar a https://www.cardioduarte.com cuando el dominio apunte
+SITE = "https://www.cardioduarte.com"   # dirección oficial (Hostinger); canonical, sitemap y URLs absolutas
+INDEXABLE = True   # False en la copia de muestra de GitHub Pages (noindex para no duplicar contenido)
 GTM_ID = "GTM-MGXBRJTH"        # ID de Google Tag Manager (GTM-XXXXXXX) cuando esté disponible
 META = {}          # título, descripción, ruta canónica y JSON-LD de la página en curso
 
@@ -351,7 +352,7 @@ def head_prod(n, fonts, color):
     ld = json.dumps(m.get("ld", {}), ensure_ascii=False, separators=(",", ":"))
     gtm = ""
     gtm_body = ""
-    if GTM_ID:
+    if GTM_ID and INDEXABLE:   # la copia de muestra no mide, para no ensuciar Analytics
         gtm = ("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
                "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
                f"j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{GTM_ID}');</script>")
@@ -365,7 +366,7 @@ def head_prod(n, fonts, color):
 {gtm}
 <title>{m['title']}</title>
 <meta name="description" content="{m['desc']}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="{'index, follow, max-image-preview:large' if INDEXABLE else 'noindex, nofollow'}">
 <link rel="canonical" href="{url}">
 <meta name="theme-color" content="{color}">
 <meta property="og:type" content="website">
