@@ -92,10 +92,10 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
   <div class="fcols">
     <div class="fbrand"><a class="brand" href="{D.R or './'}"><span class="logo"><i class="mark"></i></span><b>CARDIODUARTE</b></a>
-      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p></div>
+      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p>{linkedin_link("li-foot")}</div>
     <nav aria-label="Enlaces"><b>Enlaces</b>{nav}<a href="{D.R}{DOC_SLUG}/">{DOCTOR}</a><a href="{D.R}{SLUG[CHQ]}/">Chequeo Ejecutivo</a><a href="#cita">Agendar cita</a></nav>
     <nav aria-label="Servicios"><b>Servicios</b>{svcs}</nav>
-    <div><b>Visítenos</b><span>{DIR1}, {DIR2}, Medellín</span><a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
+    <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}
   <p class="giant" aria-hidden="true">CARDIODUARTE</p>
@@ -114,12 +114,12 @@ def cita(sel, titulo="Pida su cita"):
     {chip("Ubicación y horario")}
     <h2>{titulo}</h2>
     <ul class="ilist">
-      <li><i>{ic("pin", 18)}</i><div><b>Dirección</b><span>{DIR1}<br>{DIR2}<br>{DIR3}</span></div></li>
+      <li><i>{ic("pin", 18)}</i><div><b>Dirección</b><span>{dir_link(DIR1 + "<br>" + DIR2)}<br>{DIR3}</span>{como_llegar()}</div></li>
       <li><i>{ic("clock", 18)}</i><div><b>Horario</b><span>Lunes a viernes, 7:00 a. m. a 5:00 p. m.</span></div></li>
       <li><i>{ic("phone", 18)}</i><div><b>WhatsApp y teléfono</b><span><a href="tel:+573187984545">{TEL}</a></span></div></li>
       <li><i>{ic("mail", 18)}</i><div><b>Correo</b><span><a href="mailto:{MAIL}">{MAIL}</a></span></div></li>
     </ul>
-    <figure class="torre">{pic("v-torre", ALT["v-torre"], pos="50% 45%")}<a class="btn btn-white" href="{MAPS}" target="_blank" rel="noopener"><span>Abrir en Google Maps</span><i>{ic("arrow", 14, 2.2)}</i></a></figure>
+    {mapa()}
   </div>
   <div class="formcard" id="cita"><span class="chip">{ic("star", 12, 2)}Solicitud de cita</span><h2>Déjenos sus datos y le contactamos</h2>
     {form("btn btn-primary btn-submit", f"<i>{PLUS}</i>", sel=sel)}</div>
@@ -193,7 +193,7 @@ def org():
         "priceRange": "$$", "areaServed": {"@type": "City", "name": "Medellín"},
         "address": {"@type": "PostalAddress", "streetAddress": f"{DIR2}, {DIR1}", "addressLocality": "Medellín",
                     "addressRegion": "Antioquia", "addressCountry": "CO"},
-        "hasMap": "https://www.google.com/maps/search/?api=1&query=Calle%2033%20%2343-85%20Medell%C3%ADn",
+        "hasMap": datos.MAPS.replace("&amp;", "&"),
         "sameAs": ["https://wa.me/573187984545"],
     }
 
@@ -202,7 +202,8 @@ def doctor_ld():
     return {"@type": "Physician", "@id": f"{SITE}/#doctor", "name": "Néstor Ricardo Duarte Suárez",
             "medicalSpecialty": "Cardiovascular", "image": f"{SITE}/assets/img/dr-duarte.jpg",
             "url": f"{SITE}/{DOC_SLUG}/", "worksFor": {"@id": f"{SITE}/#clinica"},
-            "address": org()["address"], "telephone": "+57 318 798 4545"}
+            "address": org()["address"], "telephone": "+57 318 798 4545",
+            **({"sameAs": [datos.LINKEDIN]} if datos.LINKEDIN else {})}
 
 
 def crumbs_ld(name, path):
@@ -326,7 +327,7 @@ def doctor():
     body = crumbs(DOCTOR) + hero(
         "El doctor", f"{DOCTOR}, cardiólogo en Medellín", BIO, "dr-duarte", "50% 20%", None) + f"""
 <section class="sec"><div class="wrap team">
-  <article class="tm reveal">{pic("v-consulta", ALT["v-consulta"], pos="50% 80%")}<div class="tm-b"><span class="bchip">Cardiología</span><h2 class="h3">{DOCTOR}</h2><p>Cardiólogo ecocardiografista</p></div></article>
+  <article class="tm reveal">{pic("v-consulta", ALT["v-consulta"], pos="50% 80%")}<div class="tm-b"><span class="bchip">Cardiología</span><h2 class="h3">{DOCTOR}</h2><p>Cardiólogo ecocardiografista</p>{linkedin_link()}</div></article>
   <dl class="cred reveal">{cred}</dl>
 </div></section>
 <section class="wrap" id="habilitacion"><div class="panel panel-stats">

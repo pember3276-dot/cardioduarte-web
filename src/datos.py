@@ -12,7 +12,12 @@ WEB = "www.CARDIODUARTE.com"
 DIR1 = "Torre Médica Metropolitan Salud"
 DIR2 = "Calle 33 n.º 43-85, consultorio 1325"
 DIR3 = "Avenida El Poblado antes de San Diego, frente a la estación de Metroplús. Medellín."
-MAPS = "https://www.google.com/maps/search/?api=1&amp;query=Calle%2033%20%2343-85%20Medell%C3%ADn"
+# Cómo llegar. Cuando la ficha de Google Business quede aprobada, poner su enlace en MAPS.
+_Q = "Torre%20M%C3%A9dica%20Metropolitan%20Salud%2C%20Calle%2033%20%2343-85%2C%20Medell%C3%ADn"
+MAPS = f"https://www.google.com/maps/search/?api=1&amp;query={_Q}"
+MAPS_EMBED = f"https://www.google.com/maps?q={_Q}&amp;output=embed&amp;hl=es"
+WAZE = f"https://waze.com/ul?q={_Q}&amp;navigate=yes"
+LINKEDIN = ""   # perfil de LinkedIn del Dr. Duarte (pendiente: pedir el enlace exacto a Daniel)
 MINSALUD = "https://prestadores.minsalud.gov.co/habilitacion/consultadistintivo_dhss.aspx"
 DOCTOR = "Dr. Néstor Ricardo Duarte Suárez"
 H1 = "Cuidamos su corazón con tiempo, cercanía y un diagnóstico claro."
@@ -391,3 +396,27 @@ def head_prod(n, fonts, color):
 {gtm_body}
 <a class="skip" href="#contenido">Saltar al contenido</a>
 """
+
+
+def dir_link(texto):
+    """La dirección siempre lleva a Google Maps."""
+    return f'<a class="addr-link" href="{MAPS}" target="_blank" rel="noopener" title="Abrir en Google Maps">{texto}</a>'
+
+
+def como_llegar():
+    return (f'<span class="llegar"><a href="{MAPS}" target="_blank" rel="noopener">{ic("pin", 14, 2)}Google Maps</a>'
+            f'<a href="{WAZE}" target="_blank" rel="noopener">{ic("arrow", 14, 2)}Waze</a></span>')
+
+
+def mapa():
+    return (f'<figure class="mapa"><iframe src="{MAPS_EMBED}" title="Mapa: {DIR1}, {DIR2}, Medellín" loading="lazy" '
+            f'referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
+            f'<a class="btn btn-white" href="{MAPS}" target="_blank" rel="noopener"><span>Cómo llegar</span><i>{ic("arrow", 14, 2.2)}</i></a></figure>')
+
+
+def linkedin_link(cls="li-link"):
+    if not LINKEDIN:
+        return ""
+    return (f'<a class="{cls}" href="{LINKEDIN}" target="_blank" rel="noopener me">'
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>'
+            'LinkedIn del Dr. Duarte</a>')
