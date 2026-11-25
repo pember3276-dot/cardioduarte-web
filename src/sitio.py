@@ -428,6 +428,8 @@ def generar(destino):
         sm = "".join(f"<url><loc>{SITE}/{u}</loc><lastmod>{HOY}</lastmod><priority>{'1.0' if not u else '0.8'}</priority></url>\n" for u in urls)
         (base / "sitemap.xml").write_text(
             f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sm}</urlset>\n', encoding="utf-8")
+        # Clave de IndexNow (Bing/Yandex), verificada en public_html.
+        (base / "ee8c76129b0867a01def5baa5347ea1e.txt").write_text("ee8c76129b0867a01def5baa5347ea1e", encoding="utf-8")
         (base / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
         (base / ".htaccess").write_text(HTACCESS, encoding="utf-8")
         # solo los recursos que usa la web oficial
