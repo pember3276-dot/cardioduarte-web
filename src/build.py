@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera opcion-1/, opcion-2/ y opcion-3/.
+"""Genera las propuestas (opcion-1/, opcion-2/, opcion-3/) y la web publicada (src/sitio.py).
 
 - src/datos.py : contenido común (textos, servicios, preguntas, formulario)
 - src/p1.py, p2.py, p3.py : estructura de cada propuesta
@@ -21,3 +21,5 @@ if __name__ == "__main__":
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(mod.page(), encoding="utf-8")
         print("ok", d / "index.html")
+    import sitio
+    sitio.main()
