@@ -96,7 +96,7 @@ def page():
     <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · Av. El Poblado, Medellín</small></span></figcaption>
   </figure>
 </div>
-<div class="wrap stats">
+<div class="wrap stats"><h2 class="sr-only">CARDIODUARTE en cifras</h2>
   <div class="stat reveal"><p class="n" data-count="15" data-suffix="+">15+</p><h3>Años de trayectoria</h3><p>En diagnóstico y tratamiento del corazón</p></div>
   <div class="stat reveal"><p class="n" data-count="8">8</p><h3>Servicios y exámenes</h3><p>Consulta, ecocardiografía, pruebas y monitoreo</p></div>
   <div class="stat reveal"><p class="n" data-count="2">2</p><h3>Servicios habilitados</h3><p>Cardiología e imágenes no ionizantes</p></div>
@@ -233,7 +233,7 @@ def page():
     <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}
-  <p class="giant" aria-hidden="true">CARDIODUARTE</p>
+  <p class="giant" aria-hidden="true" data-t="CARDIODUARTE"></p>
   <p class="legal">{LEGAL}</p>
 </div></footer>
 """ + tail()

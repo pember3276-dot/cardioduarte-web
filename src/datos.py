@@ -416,7 +416,7 @@ def como_llegar():
 
 
 def mapa():
-    return (f'<figure class="mapa"><iframe src="{MAPS_EMBED}" title="Mapa: {DIR1}, {DIR2}, Medellín" loading="lazy" '
+    return (f'<figure class="mapa"><iframe data-src="{MAPS_EMBED}" title="Mapa: {DIR1}, {DIR2}, Medellín" loading="lazy" '
             f'referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
             f'<a class="btn btn-white" href="{MAPS}" target="_blank" rel="noopener"><span>Cómo llegar</span><i>{ic("arrow", 14, 2.2)}</i></a></figure>')
 

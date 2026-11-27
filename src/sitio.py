@@ -98,7 +98,7 @@ def footer():
     <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}
-  <p class="giant" aria-hidden="true">CARDIODUARTE</p>
+  <p class="giant" aria-hidden="true" data-t="CARDIODUARTE"></p>
   <p class="legal">{LEGAL}</p>
 </div></footer>"""
 
@@ -390,7 +390,7 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 ExpiresActive On
 ExpiresByType text/html "access plus 0 seconds"
 ExpiresByType text/css "access plus 1 month"
-ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 year"
 ExpiresByType image/webp "access plus 6 months"
 ExpiresByType image/jpeg "access plus 6 months"
 ExpiresByType image/png "access plus 6 months"
@@ -445,6 +445,10 @@ def optimizar(html, css):
            "addEventListener('load',function(){setTimeout(g,4000)})})();</script>")
     html, n = re.subn(r"<script>\(function\(w,d,s,l,i\).*?</script>", lambda m: gtm, html, count=1, flags=re.S)
     assert n == 1, "no encontré el código de Tag Manager"
+    # sitio.js con versión en la URL: se puede guardar en caché un año sin servir uno viejo.
+    import hashlib
+    v = hashlib.sha1((ROOT / "assets/js/sitio.js").read_bytes()).hexdigest()[:8]
+    html = html.replace('assets/js/sitio.js"', f'assets/js/sitio.js?v={v}"')
     html = re.sub(r'<link rel="icon" href="[^"]*logo-corazon\.png">', '<link rel="icon" href="/assets/img/logo-marca.png">', html)
     # La foto principal (LCP) se pide desde el <head>, sin esperar a leer el cuerpo.
     m = re.search(r'<source srcset="([^"]+\.webp)" type="image/webp"><img [^>]*fetchpriority="high"', html)
