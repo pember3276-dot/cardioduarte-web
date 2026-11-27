@@ -148,8 +148,14 @@ PREVENCION = [
 ALARMA = ("Dolor u opresión en el pecho, falta de aire repentina, desmayo o palpitaciones con malestar requieren "
           "atención inmediata. Acuda al servicio de urgencias más cercano o llame al <strong>123</strong>.")
 
+# Agenda en línea: Doctoralia es la agenda maestra para reservas desde la web para evitar que se crucen citas.
+# DOCTORALIA_WIDGET: pegar aquí el código del widget de reserva que da Doctoralia Pro (cuenta del consultorio);
+# mientras esté vacío, la web muestra solo el botón al perfil.
+DOCTORALIA = "https://www.doctoralia.co/perfil/nestor-ricardo-duarte-suarez"
+DOCTORALIA_WIDGET = ""
+
 PASOS = [
-    ("Escríbanos", "Por WhatsApp o con el formulario de esta página. Cuéntenos qué necesita y si tiene orden médica."),
+    ("Reserve o escríbanos", "Elija día y hora en la agenda en línea, o escríbanos por WhatsApp o con el formulario. Cuéntenos qué necesita y si tiene orden médica."),
     ("Confirmamos con usted", "Le proponemos día y hora, le decimos el valor o la cobertura y le enviamos la preparación del examen."),
     ("Prepárese", "Siga las indicaciones de su examen. Si tiene dudas, escríbanos antes de la cita."),
     ("Le atendemos", "Llegue 15 minutos antes con su documento y exámenes previos. Sale con su resultado explicado."),
@@ -165,7 +171,7 @@ PREP = [
 ]
 
 FAQ = [
-    ("¿Cómo pido una cita?", "Escríbanos por WhatsApp al 318 798 4545 o deje sus datos en el formulario de esta página. Le proponemos día y hora y le enviamos la preparación del examen."),
+    ("¿Cómo pido una cita?", "Puede reservar en línea en la agenda del Dr. Duarte en Doctoralia, escribirnos por WhatsApp al 318 798 4545 o dejar sus datos en el formulario de esta página. Si nos escribe, le proponemos día y hora y le enviamos la preparación del examen."),
     ("¿Atienden pólizas y medicina prepagada?", f"Atendemos pacientes particulares, con póliza o con medicina prepagada, según la cobertura. Escríbanos con el nombre de su aseguradora y le confirmamos cómo puede ser atendido. {tag('Ejemplo · ajustar según convenios')}"),
     ("¿Qué debo llevar el día de la cita?", "Documento de identidad, la orden médica y la autorización si su póliza o prepagada la exige, y sus exámenes y la lista de medicamentos actuales."),
     ("¿Necesito orden médica?", "Para la consulta particular no. Para exámenes cubiertos por su aseguradora, normalmente sí: confírmelo con su póliza o prepagada antes de la cita."),

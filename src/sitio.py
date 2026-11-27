@@ -11,7 +11,7 @@ import datos
 from datos import *
 import datos as D
 import p1
-from p1 import chip, btn, PLUS, FONTS
+from p1 import chip, btn, PLUS, FONTS, reserva_online
 
 ROOT = Path(__file__).resolve().parent.parent
 HOY = "2026-11-25"
@@ -121,7 +121,9 @@ def cita(sel, titulo="Pida su cita"):
     </ul>
     {mapa()}
   </div>
-  <div class="formcard" id="cita"><span class="chip">{ic("star", 12, 2)}Solicitud de cita</span><h2>Déjenos sus datos y le contactamos</h2>
+  <div class="formcard" id="cita"><span class="chip">{ic("star", 12, 2)}Solicitud de cita</span>
+    {reserva_online()}
+    <h2>O déjenos sus datos y le contactamos</h2>
     {form("btn btn-primary btn-submit", f"<i>{PLUS}</i>", sel=sel)}</div>
 </div></section>"""
 
@@ -133,7 +135,7 @@ def pasos():
     return f"""<section class="sec sec-alt"><div class="wrap">
   <div class="head-row"><div>{chip("Su cita")}<h2>Cómo pedir su cita</h2>
     <p class="lead">Le acompañamos desde el primer mensaje hasta la entrega de su resultado, explicado por el especialista.</p></div>
-    {btn("Escribir por WhatsApp", WA, "primary", ' target="_blank" rel="noopener"')}</div>
+    <div class="ctas">{btn("Reservar en línea", D.DOCTORALIA, "primary", ' target="_blank" rel="noopener" data-canal="doctoralia"')}{btn("Escribir por WhatsApp", WA, "ghost", ' target="_blank" rel="noopener"')}</div></div>
   <ol class="steps">{li}</ol>
 </div></section>"""
 
