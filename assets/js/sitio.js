@@ -24,15 +24,19 @@
   var top = document.querySelector('header.top');
   var onScroll = function () { if (top) top.classList.toggle('scrolled', window.scrollY > 8); };
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  requestAnimationFrame(onScroll);
 
-  /* Aparición suave */
+  /* Aparición suave: lo que ya se ve al abrir la página no se oculta ni se anima
+     (así la página pinta completa de inmediato); el resto aparece al desplazarse. */
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
-    doc.classList.add('anim');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        var el = en.target;
+        if (!el._rv) {                        // primera lectura, justo al observar
+          el._rv = 1;
+          if (en.isIntersecting) io.unobserve(el); else el.classList.add('rv');
+        } else if (en.isIntersecting) { el.classList.add('in'); io.unobserve(el); }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(function (el, i) {
@@ -41,20 +45,31 @@
     });
   }
 
-
-  /* Contadores (cifras que suben al aparecer) */
+  /* Contadores: suben al aparecer; si ya están a la vista al abrir, se quedan quietos */
   var nums = document.querySelectorAll('[data-count]');
   if (!reduce && 'IntersectionObserver' in window) {
     var co = new IntersectionObserver(function (es) {
       es.forEach(function (en) {
+        var el = en.target;
+        if (!el._ct) { el._ct = 1; if (en.isIntersecting) { co.unobserve(el); return; } }
         if (!en.isIntersecting) return;
-        var el = en.target, to = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', t0 = null;
+        var to = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', t0 = null;
         co.unobserve(el);
         (function step(t) { t0 = t0 || t; var k = Math.min(1, (t - t0) / 1100); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(step); })(performance.now());
       });
     }, { threshold: 0.4 });
     nums.forEach(function (n) { co.observe(n); });
   }
+
+  /* Mapa de Google: se carga cuando el visitante se acerca a la sección (no frena la portada) */
+  var maps = document.querySelectorAll('iframe[data-src]');
+  var cargar = function (f) { f.src = f.getAttribute('data-src'); f.removeAttribute('data-src'); };
+  if ('IntersectionObserver' in window) {
+    var mo = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { mo.unobserve(en.target); cargar(en.target); } });
+    }, { rootMargin: '300px 0px' });
+    maps.forEach(function (f) { mo.observe(f); });
+  } else { maps.forEach(cargar); }
 
   /* Acordeones de un solo elemento abierto */
   document.querySelectorAll('details[data-acc]').forEach(function (d) {
