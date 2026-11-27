@@ -21,50 +21,50 @@ HOY = "2026-11-25"
 KW = {
     "Consulta de cardiología": (
         "Cardiólogo en Medellín: consulta de cardiología",
-        "Cardiólogo en Medellín · Consulta de cardiología en El Poblado | CARDIODUARTE",
-        "Consulta con cardiólogo en Medellín (El Poblado) con el Dr. Néstor Ricardo Duarte Suárez. Valoración del corazón para dolor en el pecho, palpitaciones o presión alta. Particular, póliza y prepagada.",
+        "Cardiólogo en Medellín · Consulta de cardiología en la Av. El Poblado | CARDIODUARTE",
+        "Consulta con cardiólogo en Medellín (Av. El Poblado, San Diego) con el Dr. Néstor Ricardo Duarte Suárez. Valoración del corazón para dolor en el pecho, palpitaciones o presión alta. Particular, póliza y prepagada.",
         "Le atiende directamente el cardiólogo, con tiempo para escucharle, examinarle y explicarle qué tiene su corazón y qué hacer.",
         "v-consulta", "50% 78%", None),
     "Ecocardiograma transtorácico": (
         "Ecocardiograma en Medellín",
-        "Ecocardiograma en Medellín · Ecocardiograma transtorácico en El Poblado | CARDIODUARTE",
-        "Ecocardiograma transtorácico en Medellín, realizado e interpretado por cardiólogo ecocardiografista. Sin dolor y sin radiación. El Poblado, Torre Médica Metropolitan Salud.",
+        "Ecocardiograma en Medellín · Ecocardiograma transtorácico en la Av. El Poblado | CARDIODUARTE",
+        "Ecocardiograma transtorácico en Medellín, realizado e interpretado por cardiólogo ecocardiografista. Sin dolor y sin radiación. Avenida El Poblado, sector San Diego, Torre Médica Metropolitan Salud.",
         "El ecocardiograma lo hace y lo interpreta el mismo cardiólogo ecocardiografista, y le explica el resultado.",
         "v-ecografo", "50% 55%", 0),
     "Ecocardiograma de estrés con ejercicio": (
         "Ecocardiograma de estrés con ejercicio en Medellín",
         "Ecocardiograma de estrés con ejercicio en Medellín | CARDIODUARTE",
-        "Ecocardiograma de estrés con ejercicio en Medellín (El Poblado): evalúa cómo responde el corazón al esfuerzo. Realizado por cardiólogo ecocardiografista.",
+        "Ecocardiograma de estrés con ejercicio en Medellín (Av. El Poblado, San Diego): evalúa cómo responde el corazón al esfuerzo. Realizado por cardiólogo ecocardiografista.",
         "Un ecocardiograma antes y después del ejercicio en banda, con el especialista presente durante todo el examen.",
         "sala-ecocardiografia", "30% 50%", 1),
     "Ecocardiograma de estrés farmacológico": (
         "Ecocardiograma de estrés farmacológico en Medellín",
         "Ecocardiograma de estrés farmacológico en Medellín | CARDIODUARTE",
-        "Ecocardiograma de estrés farmacológico en Medellín para pacientes que no pueden hacer ejercicio. Bajo vigilancia continua del cardiólogo, en El Poblado.",
+        "Ecocardiograma de estrés farmacológico en Medellín para pacientes que no pueden hacer ejercicio. Bajo vigilancia continua del cardiólogo, sobre la Avenida El Poblado (San Diego).",
         "Para quien no puede caminar en banda: el esfuerzo se simula con un medicamento, con vigilancia continua del especialista.",
         "sala-ecocardiografia", "60% 50%", 1),
     "Electrocardiograma": (
         "Electrocardiograma en Medellín",
-        "Electrocardiograma en Medellín · EKG en El Poblado | CARDIODUARTE",
-        "Electrocardiograma (EKG) en Medellín, El Poblado. Registro de la actividad eléctrica del corazón en pocos minutos, interpretado por cardiólogo.",
+        "Electrocardiograma en Medellín · EKG en la Av. El Poblado | CARDIODUARTE",
+        "Electrocardiograma (EKG) en Medellín, sobre la Avenida El Poblado (San Diego). Registro de la actividad eléctrica del corazón en pocos minutos, interpretado por cardiólogo.",
         "Un examen rápido y sencillo, interpretado por el cardiólogo.",
         "v-cuadros", "50% 50%", 2),
     "Prueba de esfuerzo": (
         "Prueba de esfuerzo en Medellín",
-        "Prueba de esfuerzo en Medellín · Ergometría en El Poblado | CARDIODUARTE",
-        "Prueba de esfuerzo en Medellín (El Poblado): electrocardiograma mientras camina en banda para medir su capacidad física y la respuesta del corazón.",
+        "Prueba de esfuerzo en Medellín · Ergometría en la Av. El Poblado | CARDIODUARTE",
+        "Prueba de esfuerzo en Medellín (Av. El Poblado, San Diego): electrocardiograma mientras camina en banda para medir su capacidad física y la respuesta del corazón.",
         "Mide cómo responde su corazón al ejercicio, con el cardiólogo a su lado durante toda la prueba.",
         "v-esfuerzo", "50% 50%", 1),
     "Holter de ritmo (24 a 48 h)": (
         "Holter en Medellín (24 a 48 horas)",
         "Holter en Medellín · Holter de ritmo 24 a 48 horas | CARDIODUARTE",
-        "Holter de ritmo cardíaco de 24 a 48 horas en Medellín (El Poblado), para estudiar palpitaciones, mareos o desmayos. Lectura por cardiólogo.",
+        "Holter de ritmo cardíaco de 24 a 48 horas en Medellín (Av. El Poblado, San Diego), para estudiar palpitaciones, mareos o desmayos. Lectura por cardiólogo.",
         "Estudio del ritmo del corazón durante 24 a 48 horas, con lectura e informe del cardiólogo.",
         "v-consulta", "50% 70%", 3),
     "Monitoreo de presión arterial (MAPA)": (
         "MAPA en Medellín: monitoreo de presión arterial de 24 horas",
         "MAPA en Medellín · Monitoreo de presión arterial 24 horas | CARDIODUARTE",
-        "MAPA (monitoreo ambulatorio de presión arterial de 24 horas) en Medellín, El Poblado. Diagnóstico preciso de la hipertensión, con lectura por cardiólogo.",
+        "MAPA (monitoreo ambulatorio de presión arterial de 24 horas) en Medellín, sobre la Avenida El Poblado (San Diego). Diagnóstico preciso de la hipertensión, con lectura por cardiólogo.",
         "Su presión arterial medida durante 24 horas, en su rutina diaria, para un diagnóstico preciso.",
         "recepcion", "50% 30%", 4),
 }
@@ -92,7 +92,7 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
   <div class="fcols">
     <div class="fbrand"><a class="brand" href="{D.R or './'}"><span class="logo"><i class="mark"></i></span><b>CARDIODUARTE</b></a>
-      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p>{linkedin_link("li-foot")}</div>
+      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en la Avenida El Poblado, sector San Diego, Medellín.</p>{linkedin_link("li-foot")}</div>
     <nav aria-label="Enlaces"><b>Enlaces</b>{nav}<a href="{D.R}{DOC_SLUG}/">{DOCTOR}</a><a href="{D.R}{SLUG[CHQ]}/">Chequeo Ejecutivo</a><a href="#cita">Agendar cita</a></nav>
     <nav aria-label="Servicios"><b>Servicios</b>{svcs}</nav>
     <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
@@ -176,7 +176,7 @@ def hero(chip_t, h1, lead, img, pos, sel, extra=""):
   <figure class="hero-media">
     {pic(img, ALT[img], eager=True, pos=pos)}
     <span class="badge">{ic("shield", 16, 2)}Servicios habilitados ante MinSalud</span>
-    <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · El Poblado, Medellín</small></span></figcaption>
+    <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · Av. El Poblado, Medellín</small></span></figcaption>
   </figure>
 </div></section>"""
 
@@ -189,7 +189,7 @@ def page(body, color="#164E78"):
 def org():
     return {
         "@type": "MedicalClinic", "@id": f"{SITE}/#clinica", "name": "CARDIODUARTE",
-        "description": "Consultorio de cardiología y ecocardiografía en El Poblado, Medellín.",
+        "description": "Consultorio de cardiología y ecocardiografía en la Avenida El Poblado, sector San Diego, Medellín.",
         "url": f"{SITE}/", "image": f"{SITE}/assets/img/recepcion.jpg", "logo": f"{SITE}/assets/img/logo-corazon.png",
         "telephone": "+57 318 798 4545", "email": MAIL, "medicalSpecialty": "Cardiovascular",
         "priceRange": "$$", "areaServed": {"@type": "City", "name": "Medellín"},
@@ -228,7 +228,7 @@ def portada():
     datos.META = {
         "path": "", "img": "dr-duarte",
         "title": "Cardiólogo en Medellín · Ecocardiograma, Holter y MAPA | CARDIODUARTE",
-        "desc": ("CARDIODUARTE: cardiólogo ecocardiografista en El Poblado, Medellín. Consulta de cardiología, ecocardiograma, "
+        "desc": ("CARDIODUARTE: cardiólogo ecocardiografista en la Avenida El Poblado, sector San Diego, Medellín. Consulta de cardiología, ecocardiograma, "
                  "eco estrés, prueba de esfuerzo, Holter, MAPA y Chequeo Ejecutivo Cardiovascular con el Dr. Néstor Ricardo Duarte Suárez."),
         "ld": {"@context": "https://schema.org", "@graph": [
             {"@type": "WebSite", "@id": f"{SITE}/#web", "url": f"{SITE}/", "name": "CARDIODUARTE", "inLanguage": "es-CO"},
@@ -260,7 +260,7 @@ def micrositio(t):
     razones = "".join(
         f'<article class="vcard reveal"><div class="vtop"><span class="num">{i + 1:02d}</span>{ic("star", 18, 1.8)}</div>'
         f'<h3>{rt}</h3><p>{rd}</p></article>' for i, (rk, rt, rd) in enumerate(RAZONES[:3]))
-    body = crumbs(t) + hero("Servicio · El Poblado, Medellín", h1, intro, img, pos, t) + f"""
+    body = crumbs(t) + hero("Servicio · Av. El Poblado, Medellín", h1, intro, img, pos, t) + f"""
 <section class="sec"><div class="wrap split2">
   <div class="about-svc reveal">{chip("En qué consiste")}<h2>{t}</h2><p class="lead">{d}</p>
     <div class="util"><span>{ic(k, 22)}</span><p><b>Es útil si</b> {u}</p></div>
@@ -281,7 +281,7 @@ def micrositio(t):
 def chequeo():
     slug = SLUG[CHQ]
     datos.R = "../"
-    desc = ("Chequeo Ejecutivo Cardiovascular en Medellín (El Poblado): consulta de cardiología, ecocardiograma de estrés, "
+    desc = ("Chequeo Ejecutivo Cardiovascular en Medellín (Av. El Poblado, San Diego): consulta de cardiología, ecocardiograma de estrés, "
             "Holter de 24 horas y MAPA en un solo programa, con resultados explicados por el cardiólogo.")
     datos.META = {
         "path": f"{slug}/", "img": "v-letrero", "title": "Chequeo Ejecutivo Cardiovascular en Medellín | CARDIODUARTE", "desc": desc,
@@ -314,7 +314,7 @@ def chequeo():
 def doctor():
     datos.R = "../"
     desc = ("Dr. Néstor Ricardo Duarte Suárez, cardiólogo ecocardiografista en Medellín con más de 15 años de trayectoria. "
-            "Consulta de cardiología y ecocardiografía en El Poblado.")
+            "Consulta de cardiología y ecocardiografía sobre la Avenida El Poblado, sector San Diego.")
     datos.META = {
         "path": f"{DOC_SLUG}/", "img": "dr-duarte",
         "title": "Dr. Néstor Ricardo Duarte Suárez · Cardiólogo ecocardiografista en Medellín | CARDIODUARTE", "desc": desc,
