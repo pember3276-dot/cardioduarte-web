@@ -1,7 +1,7 @@
 .htaccess
 404.html
-assets/css/comun.css
-assets/css/opcion-1.css
+assets/fonts/geist-latin.woff2
+assets/fonts/inter-latin.woff2
 assets/img/dist-cardiologia.jpg
 assets/img/dist-cardiologia.webp
 assets/img/dist-imagenes.jpg
@@ -9,6 +9,7 @@ assets/img/dist-imagenes.webp
 assets/img/dr-duarte.jpg
 assets/img/dr-duarte.webp
 assets/img/logo-corazon.png
+assets/img/logo-marca.png
 assets/img/recepcion.jpg
 assets/img/recepcion.webp
 assets/img/sala-ecocardiografia.jpg
