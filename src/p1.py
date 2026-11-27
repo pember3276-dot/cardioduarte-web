@@ -83,7 +83,7 @@ def page():
 <main id="contenido">
 <section class="hero" id="inicio"><div class="wrap hero-grid">
   <div class="hero-copy">
-    {chip("Cardiólogo en Medellín · El Poblado" if D.PROD else "Atención directa del especialista")}
+    {chip("Cardiólogo en Medellín" if D.PROD else "Atención directa del especialista")}
     <h1>{H1}</h1>
     <p class="lead">{LEAD}</p>
     <div class="ctas">{btn("Agendar una cita")}{btn("Ver servicios", "#servicios", "ghost")}</div>
@@ -93,10 +93,10 @@ def page():
   <figure class="hero-media">
     {pic("dr-duarte", ALT["dr-duarte"], eager=True, pos="50% 20%")}
     <span class="badge">{ic("shield", 16, 2)}Servicios habilitados ante MinSalud</span>
-    <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · El Poblado, Medellín</small></span></figcaption>
+    <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · Av. El Poblado, Medellín</small></span></figcaption>
   </figure>
 </div>
-<div class="wrap stats">
+<div class="wrap stats"><h2 class="sr-only">CARDIODUARTE en cifras</h2>
   <div class="stat reveal"><p class="n" data-count="15" data-suffix="+">15+</p><h3>Años de trayectoria</h3><p>En diagnóstico y tratamiento del corazón</p></div>
   <div class="stat reveal"><p class="n" data-count="8">8</p><h3>Servicios y exámenes</h3><p>Consulta, ecocardiografía, pruebas y monitoreo</p></div>
   <div class="stat reveal"><p class="n" data-count="2">2</p><h3>Servicios habilitados</h3><p>Cardiología e imágenes no ionizantes</p></div>
@@ -201,7 +201,7 @@ def page():
 <section class="sec" id="ubicacion"><div class="wrap visit">
   <div class="info">
     {chip("Ubicación y horario")}
-    <h2>Le esperamos en El Poblado</h2>
+    <h2>Le esperamos sobre la Avenida El Poblado</h2>
     <ul class="ilist">
       <li><i>{ic("pin", 18)}</i><div><b>Dirección</b><span>{dir_link(DIR1 + "<br>" + DIR2)}<br>{DIR3}</span>{como_llegar()}</div></li>
       <li><i>{ic("clock", 18)}</i><div><b>Horario</b><span>Lunes a viernes, 7:00 a. m. a 5:00 p. m. {tag("Validar")}</span></div></li>
@@ -227,13 +227,13 @@ def page():
 <footer class="foot"><div class="wrap">
   <div class="fcols">
     <div class="fbrand"><a class="brand" href="#inicio"><span class="logo"><i class="mark"></i></span><b>CARDIODUARTE</b></a>
-      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p>{linkedin_link("li-foot")}</div>
+      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en la Avenida El Poblado, sector San Diego, Medellín.</p>{linkedin_link("li-foot")}</div>
     <nav aria-label="Enlaces"><b>Enlaces</b>{nav}{f'<a href="{D.R}{DOC_SLUG}/">{DOCTOR}</a><a href="{D.R}{SLUG["Chequeo Ejecutivo Cardiovascular"]}/">Chequeo Ejecutivo</a>' if D.PROD else ""}<a href="#cita">Agendar cita</a></nav>
     <nav aria-label="Servicios"><b>Servicios</b>{"".join(f'<a href="{D.R + SLUG[s[1]] + "/" if D.PROD else "#servicios"}">{s[1]}</a>' for s in (SERVICIOS if D.PROD else SERVICIOS[:5]))}</nav>
     <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}
-  <p class="giant" aria-hidden="true">CARDIODUARTE</p>
+  <p class="giant" aria-hidden="true" data-t="CARDIODUARTE"></p>
   <p class="legal">{LEGAL}</p>
 </div></footer>
 """ + tail()

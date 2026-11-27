@@ -21,50 +21,50 @@ HOY = "2026-11-25"
 KW = {
     "Consulta de cardiología": (
         "Cardiólogo en Medellín: consulta de cardiología",
-        "Cardiólogo en Medellín · Consulta de cardiología en El Poblado | CARDIODUARTE",
-        "Consulta con cardiólogo en Medellín (El Poblado) con el Dr. Néstor Ricardo Duarte Suárez. Valoración del corazón para dolor en el pecho, palpitaciones o presión alta. Particular, póliza y prepagada.",
+        "Cardiólogo en Medellín · Consulta de cardiología en la Av. El Poblado | CARDIODUARTE",
+        "Consulta con cardiólogo en Medellín (Av. El Poblado, San Diego) con el Dr. Néstor Ricardo Duarte Suárez. Valoración del corazón para dolor en el pecho, palpitaciones o presión alta. Particular, póliza y prepagada.",
         "Le atiende directamente el cardiólogo, con tiempo para escucharle, examinarle y explicarle qué tiene su corazón y qué hacer.",
         "v-consulta", "50% 78%", None),
     "Ecocardiograma transtorácico": (
         "Ecocardiograma en Medellín",
-        "Ecocardiograma en Medellín · Ecocardiograma transtorácico en El Poblado | CARDIODUARTE",
-        "Ecocardiograma transtorácico en Medellín, realizado e interpretado por cardiólogo ecocardiografista. Sin dolor y sin radiación. El Poblado, Torre Médica Metropolitan Salud.",
+        "Ecocardiograma en Medellín · Ecocardiograma transtorácico en la Av. El Poblado | CARDIODUARTE",
+        "Ecocardiograma transtorácico en Medellín, realizado e interpretado por cardiólogo ecocardiografista. Sin dolor y sin radiación. Avenida El Poblado, sector San Diego, Torre Médica Metropolitan Salud.",
         "El ecocardiograma lo hace y lo interpreta el mismo cardiólogo ecocardiografista, y le explica el resultado.",
         "v-ecografo", "50% 55%", 0),
     "Ecocardiograma de estrés con ejercicio": (
         "Ecocardiograma de estrés con ejercicio en Medellín",
         "Ecocardiograma de estrés con ejercicio en Medellín | CARDIODUARTE",
-        "Ecocardiograma de estrés con ejercicio en Medellín (El Poblado): evalúa cómo responde el corazón al esfuerzo. Realizado por cardiólogo ecocardiografista.",
+        "Ecocardiograma de estrés con ejercicio en Medellín (Av. El Poblado, San Diego): evalúa cómo responde el corazón al esfuerzo. Realizado por cardiólogo ecocardiografista.",
         "Un ecocardiograma antes y después del ejercicio en banda, con el especialista presente durante todo el examen.",
         "sala-ecocardiografia", "30% 50%", 1),
     "Ecocardiograma de estrés farmacológico": (
         "Ecocardiograma de estrés farmacológico en Medellín",
         "Ecocardiograma de estrés farmacológico en Medellín | CARDIODUARTE",
-        "Ecocardiograma de estrés farmacológico en Medellín para pacientes que no pueden hacer ejercicio. Bajo vigilancia continua del cardiólogo, en El Poblado.",
+        "Ecocardiograma de estrés farmacológico en Medellín para pacientes que no pueden hacer ejercicio. Bajo vigilancia continua del cardiólogo, sobre la Avenida El Poblado (San Diego).",
         "Para quien no puede caminar en banda: el esfuerzo se simula con un medicamento, con vigilancia continua del especialista.",
         "sala-ecocardiografia", "60% 50%", 1),
     "Electrocardiograma": (
         "Electrocardiograma en Medellín",
-        "Electrocardiograma en Medellín · EKG en El Poblado | CARDIODUARTE",
-        "Electrocardiograma (EKG) en Medellín, El Poblado. Registro de la actividad eléctrica del corazón en pocos minutos, interpretado por cardiólogo.",
+        "Electrocardiograma en Medellín · EKG en la Av. El Poblado | CARDIODUARTE",
+        "Electrocardiograma (EKG) en Medellín, sobre la Avenida El Poblado (San Diego). Registro de la actividad eléctrica del corazón en pocos minutos, interpretado por cardiólogo.",
         "Un examen rápido y sencillo, interpretado por el cardiólogo.",
         "v-cuadros", "50% 50%", 2),
     "Prueba de esfuerzo": (
         "Prueba de esfuerzo en Medellín",
-        "Prueba de esfuerzo en Medellín · Ergometría en El Poblado | CARDIODUARTE",
-        "Prueba de esfuerzo en Medellín (El Poblado): electrocardiograma mientras camina en banda para medir su capacidad física y la respuesta del corazón.",
+        "Prueba de esfuerzo en Medellín · Ergometría en la Av. El Poblado | CARDIODUARTE",
+        "Prueba de esfuerzo en Medellín (Av. El Poblado, San Diego): electrocardiograma mientras camina en banda para medir su capacidad física y la respuesta del corazón.",
         "Mide cómo responde su corazón al ejercicio, con el cardiólogo a su lado durante toda la prueba.",
         "v-esfuerzo", "50% 50%", 1),
     "Holter de ritmo (24 a 48 h)": (
         "Holter en Medellín (24 a 48 horas)",
         "Holter en Medellín · Holter de ritmo 24 a 48 horas | CARDIODUARTE",
-        "Holter de ritmo cardíaco de 24 a 48 horas en Medellín (El Poblado), para estudiar palpitaciones, mareos o desmayos. Lectura por cardiólogo.",
+        "Holter de ritmo cardíaco de 24 a 48 horas en Medellín (Av. El Poblado, San Diego), para estudiar palpitaciones, mareos o desmayos. Lectura por cardiólogo.",
         "Estudio del ritmo del corazón durante 24 a 48 horas, con lectura e informe del cardiólogo.",
         "v-consulta", "50% 70%", 3),
     "Monitoreo de presión arterial (MAPA)": (
         "MAPA en Medellín: monitoreo de presión arterial de 24 horas",
         "MAPA en Medellín · Monitoreo de presión arterial 24 horas | CARDIODUARTE",
-        "MAPA (monitoreo ambulatorio de presión arterial de 24 horas) en Medellín, El Poblado. Diagnóstico preciso de la hipertensión, con lectura por cardiólogo.",
+        "MAPA (monitoreo ambulatorio de presión arterial de 24 horas) en Medellín, sobre la Avenida El Poblado (San Diego). Diagnóstico preciso de la hipertensión, con lectura por cardiólogo.",
         "Su presión arterial medida durante 24 horas, en su rutina diaria, para un diagnóstico preciso.",
         "recepcion", "50% 30%", 4),
 }
@@ -92,13 +92,13 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
   <div class="fcols">
     <div class="fbrand"><a class="brand" href="{D.R or './'}"><span class="logo"><i class="mark"></i></span><b>CARDIODUARTE</b></a>
-      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p>{linkedin_link("li-foot")}</div>
+      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en la Avenida El Poblado, sector San Diego, Medellín.</p>{linkedin_link("li-foot")}</div>
     <nav aria-label="Enlaces"><b>Enlaces</b>{nav}<a href="{D.R}{DOC_SLUG}/">{DOCTOR}</a><a href="{D.R}{SLUG[CHQ]}/">Chequeo Ejecutivo</a><a href="#cita">Agendar cita</a></nav>
     <nav aria-label="Servicios"><b>Servicios</b>{svcs}</nav>
     <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}
-  <p class="giant" aria-hidden="true">CARDIODUARTE</p>
+  <p class="giant" aria-hidden="true" data-t="CARDIODUARTE"></p>
   <p class="legal">{LEGAL}</p>
 </div></footer>"""
 
@@ -176,7 +176,7 @@ def hero(chip_t, h1, lead, img, pos, sel, extra=""):
   <figure class="hero-media">
     {pic(img, ALT[img], eager=True, pos=pos)}
     <span class="badge">{ic("shield", 16, 2)}Servicios habilitados ante MinSalud</span>
-    <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · El Poblado, Medellín</small></span></figcaption>
+    <figcaption class="hcard"><span class="hc-ic">{ic("heartecg", 20)}</span><span><b>{DOCTOR}</b><small>Cardiólogo ecocardiografista · Av. El Poblado, Medellín</small></span></figcaption>
   </figure>
 </div></section>"""
 
@@ -189,7 +189,7 @@ def page(body, color="#164E78"):
 def org():
     return {
         "@type": "MedicalClinic", "@id": f"{SITE}/#clinica", "name": "CARDIODUARTE",
-        "description": "Consultorio de cardiología y ecocardiografía en El Poblado, Medellín.",
+        "description": "Consultorio de cardiología y ecocardiografía en la Avenida El Poblado, sector San Diego, Medellín.",
         "url": f"{SITE}/", "image": f"{SITE}/assets/img/recepcion.jpg", "logo": f"{SITE}/assets/img/logo-corazon.png",
         "telephone": "+57 318 798 4545", "email": MAIL, "medicalSpecialty": "Cardiovascular",
         "priceRange": "$$", "areaServed": {"@type": "City", "name": "Medellín"},
@@ -228,7 +228,7 @@ def portada():
     datos.META = {
         "path": "", "img": "dr-duarte",
         "title": "Cardiólogo en Medellín · Ecocardiograma, Holter y MAPA | CARDIODUARTE",
-        "desc": ("CARDIODUARTE: cardiólogo ecocardiografista en El Poblado, Medellín. Consulta de cardiología, ecocardiograma, "
+        "desc": ("CARDIODUARTE: cardiólogo ecocardiografista en la Avenida El Poblado, sector San Diego, Medellín. Consulta de cardiología, ecocardiograma, "
                  "eco estrés, prueba de esfuerzo, Holter, MAPA y Chequeo Ejecutivo Cardiovascular con el Dr. Néstor Ricardo Duarte Suárez."),
         "ld": {"@context": "https://schema.org", "@graph": [
             {"@type": "WebSite", "@id": f"{SITE}/#web", "url": f"{SITE}/", "name": "CARDIODUARTE", "inLanguage": "es-CO"},
@@ -260,7 +260,7 @@ def micrositio(t):
     razones = "".join(
         f'<article class="vcard reveal"><div class="vtop"><span class="num">{i + 1:02d}</span>{ic("star", 18, 1.8)}</div>'
         f'<h3>{rt}</h3><p>{rd}</p></article>' for i, (rk, rt, rd) in enumerate(RAZONES[:3]))
-    body = crumbs(t) + hero("Servicio · El Poblado, Medellín", h1, intro, img, pos, t) + f"""
+    body = crumbs(t) + hero("Servicio · Av. El Poblado, Medellín", h1, intro, img, pos, t) + f"""
 <section class="sec"><div class="wrap split2">
   <div class="about-svc reveal">{chip("En qué consiste")}<h2>{t}</h2><p class="lead">{d}</p>
     <div class="util"><span>{ic(k, 22)}</span><p><b>Es útil si</b> {u}</p></div>
@@ -281,7 +281,7 @@ def micrositio(t):
 def chequeo():
     slug = SLUG[CHQ]
     datos.R = "../"
-    desc = ("Chequeo Ejecutivo Cardiovascular en Medellín (El Poblado): consulta de cardiología, ecocardiograma de estrés, "
+    desc = ("Chequeo Ejecutivo Cardiovascular en Medellín (Av. El Poblado, San Diego): consulta de cardiología, ecocardiograma de estrés, "
             "Holter de 24 horas y MAPA en un solo programa, con resultados explicados por el cardiólogo.")
     datos.META = {
         "path": f"{slug}/", "img": "v-letrero", "title": "Chequeo Ejecutivo Cardiovascular en Medellín | CARDIODUARTE", "desc": desc,
@@ -314,7 +314,7 @@ def chequeo():
 def doctor():
     datos.R = "../"
     desc = ("Dr. Néstor Ricardo Duarte Suárez, cardiólogo ecocardiografista en Medellín con más de 15 años de trayectoria. "
-            "Consulta de cardiología y ecocardiografía en El Poblado.")
+            "Consulta de cardiología y ecocardiografía sobre la Avenida El Poblado, sector San Diego.")
     datos.META = {
         "path": f"{DOC_SLUG}/", "img": "dr-duarte",
         "title": "Dr. Néstor Ricardo Duarte Suárez · Cardiólogo ecocardiografista en Medellín | CARDIODUARTE", "desc": desc,
@@ -390,16 +390,74 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 ExpiresActive On
 ExpiresByType text/html "access plus 0 seconds"
 ExpiresByType text/css "access plus 1 month"
-ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType application/x-javascript "access plus 1 year"
+ExpiresByType text/javascript "access plus 1 year"
 ExpiresByType image/webp "access plus 6 months"
 ExpiresByType image/jpeg "access plus 6 months"
 ExpiresByType image/png "access plus 6 months"
+ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
+
+AddType font/woff2 .woff2
 
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml application/xml
 </IfModule>
 """
+
+
+# --- Velocidad (PageSpeed): solo en la web oficial ---
+# assets/fonts: Inter y Geist (OFL) de Google Fonts, recortadas a latín y pesos 400-600 con fontTools.
+FUENTES = ("@font-face{font-family:'Geist';font-style:normal;font-weight:400 600;font-display:swap;"
+           "src:url(/assets/fonts/geist-latin.woff2) format('woff2')}"
+           "@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;"
+           "src:url(/assets/fonts/inter-latin.woff2) format('woff2')}")
+
+
+def css_en_linea():
+    """CSS de la web en un solo bloque, sin comentarios, con rutas absolutas."""
+    import re
+    css = ""
+    for c in ("comun.css", "opcion-1.css"):
+        css += (ROOT / "assets/css" / c).read_text(encoding="utf-8")
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s*\n\s*", "", css)
+    css = css.replace("../img/logo-corazon.png", "/assets/img/logo-marca.png").replace("../img/", "/assets/img/")
+    return FUENTES + css
+
+
+def optimizar(html, css):
+    """Quita lo que bloquea el primer pintado: fuentes de Google, hojas de estilo externas y Tag Manager."""
+    import re
+    pre = ('<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
+           '<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
+           f"<style>{css}</style>")
+    html, n = re.subn(r'<link rel="preconnect" href="https://fonts\.googleapis\.com">\n'
+                      r'<link rel="preconnect" href="https://fonts\.gstatic\.com" crossorigin>\n'
+                      r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/[^"]*">\n'
+                      r'<link rel="stylesheet" href="[^"]*comun\.css">\n'
+                      r'<link rel="stylesheet" href="[^"]*opcion-1\.css">', lambda m: pre, html)
+    assert n == 1, "no encontré los <link> de fuentes y CSS"
+    # Tag Manager (y con él GA4) se carga con la primera interacción (toque, mouse, rueda o tecla)
+    # o 10 s después de cargar la página, para que no compita con el primer pintado.
+    gtm = ("<script>window.dataLayer=window.dataLayer||[];(function(){var c=0;function g(){if(c)return;c=1;"
+           "dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});var j=document.createElement('script');j.async=true;"
+           f"j.src='https://www.googletagmanager.com/gtm.js?id={datos.GTM_ID}';document.head.appendChild(j)}}"
+           "['pointerdown','keydown','touchstart','mousemove','wheel'].forEach(function(e){addEventListener(e,g,{once:true,passive:true})});"
+           "addEventListener('load',function(){setTimeout(g,10000)})})();</script>")
+    html, n = re.subn(r"<script>\(function\(w,d,s,l,i\).*?</script>", lambda m: gtm, html, count=1, flags=re.S)
+    assert n == 1, "no encontré el código de Tag Manager"
+    # sitio.js con versión en la URL: se puede guardar en caché un año sin servir uno viejo.
+    import hashlib
+    v = hashlib.sha1((ROOT / "assets/js/sitio.js").read_bytes()).hexdigest()[:8]
+    html = html.replace('assets/js/sitio.js"', f'assets/js/sitio.js?v={v}"')
+    html = re.sub(r'<link rel="icon" href="[^"]*logo-corazon\.png">', '<link rel="icon" href="/assets/img/logo-marca.png">', html)
+    # La foto principal (LCP) se pide desde el <head>, sin esperar a leer el cuerpo.
+    m = re.search(r'<source srcset="([^"]+\.webp)" type="image/webp"><img [^>]*fetchpriority="high"', html)
+    if m:
+        html = html.replace("<style>", f'<link rel="preload" as="image" href="{m.group(1)}" type="image/webp" fetchpriority="high">\n<style>', 1)
+    return html
 
 
 def generar(destino):
@@ -420,6 +478,9 @@ def generar(destino):
     out[f"{SLUG[CHQ]}/index.html"] = chequeo()
     out[f"{DOC_SLUG}/index.html"] = doctor()
     out["404.html"] = pagina_404()
+    if oficial:
+        css = css_en_linea()
+        out = {rel: optimizar(html, css) for rel, html in out.items()}
     for rel, html in out.items():
         f = base / rel
         f.parent.mkdir(parents=True, exist_ok=True)
@@ -440,7 +501,9 @@ def generar(destino):
             usados |= set(re.findall(r'assets/img/([\w.-]+)', html))
         for c in ("comun.css", "opcion-1.css"):
             usados |= set(re.findall(r"img/([\w.-]+)", (ROOT / "assets/css" / c).read_text()))
-        for rel in ["assets/css/comun.css", "assets/css/opcion-1.css", "assets/js/sitio.js"] + [f"assets/img/{n}" for n in sorted(usados)]:
+        usados |= set(re.findall(r"/assets/img/([\w.-]+)", css))
+        fuentes = ["assets/fonts/geist-latin.woff2", "assets/fonts/inter-latin.woff2"]
+        for rel in ["assets/js/sitio.js"] + fuentes + [f"assets/img/{n}" for n in sorted(usados)]:
             (base / rel).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, base / rel)
     datos.PROD = False

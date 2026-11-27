@@ -134,7 +134,7 @@ RAZONES = [
     ("grid", "Consulta y exámenes en un solo lugar", "Ecocardiografía, pruebas de esfuerzo, Holter y MAPA sin ir de un sitio a otro."),
     ("shield", "Servicios habilitados", "Cardiología e imágenes no ionizantes habilitadas ante el Ministerio de Salud."),
     ("award", "Más de 15 años de trayectoria", "Experiencia en diagnóstico y tratamiento, incluida la jefatura de un servicio de cardiología."),
-    ("pin", "Fácil de llegar", "Torre Médica Metropolitan Salud, en El Poblado, frente a la estación de Metroplús."),
+    ("pin", "Fácil de llegar", "Torre Médica Metropolitan Salud, sobre la Avenida El Poblado (San Diego), frente a la estación de Metroplús."),
 ]
 
 PREVENCION = [
@@ -272,7 +272,7 @@ def head(n, fonts, color):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>CARDIODUARTE · Cardiología y ecocardiografía en Medellín (opción {n})</title>
-<meta name="description" content="CARDIODUARTE: consulta de cardiología, ecocardiograma, ecocardiograma de estrés, prueba de esfuerzo, Holter y MAPA con el Dr. Néstor Ricardo Duarte Suárez en El Poblado, Medellín.">
+<meta name="description" content="CARDIODUARTE: consulta de cardiología, ecocardiograma, ecocardiograma de estrés, prueba de esfuerzo, Holter y MAPA con el Dr. Néstor Ricardo Duarte Suárez en la Avenida El Poblado, sector San Diego, Medellín.">
 <meta name="theme-color" content="{color}">
 <link rel="icon" href="../assets/img/logo-corazon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -416,7 +416,7 @@ def como_llegar():
 
 
 def mapa():
-    return (f'<figure class="mapa"><iframe src="{MAPS_EMBED}" title="Mapa: {DIR1}, {DIR2}, Medellín" loading="lazy" '
+    return (f'<figure class="mapa"><iframe data-src="{MAPS_EMBED}" title="Mapa: {DIR1}, {DIR2}, Medellín" loading="lazy" '
             f'referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
             f'<a class="btn btn-white" href="{MAPS}" target="_blank" rel="noopener"><span>Cómo llegar</span><i>{ic("arrow", 14, 2.2)}</i></a></figure>')
 
