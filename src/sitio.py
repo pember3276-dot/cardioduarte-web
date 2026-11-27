@@ -439,12 +439,13 @@ def optimizar(html, css):
                       r'<link rel="stylesheet" href="[^"]*comun\.css">\n'
                       r'<link rel="stylesheet" href="[^"]*opcion-1\.css">', lambda m: pre, html)
     assert n == 1, "no encontré los <link> de fuentes y CSS"
-    # Tag Manager (y con él GA4) se carga con la primera interacción o 4 s después de cargar la página.
+    # Tag Manager (y con él GA4) se carga con la primera interacción (toque, mouse, rueda o tecla)
+    # o 10 s después de cargar la página, para que no compita con el primer pintado.
     gtm = ("<script>window.dataLayer=window.dataLayer||[];(function(){var c=0;function g(){if(c)return;c=1;"
            "dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});var j=document.createElement('script');j.async=true;"
            f"j.src='https://www.googletagmanager.com/gtm.js?id={datos.GTM_ID}';document.head.appendChild(j)}}"
-           "['scroll','pointerdown','keydown','touchstart','mousemove'].forEach(function(e){addEventListener(e,g,{once:true,passive:true})});"
-           "addEventListener('load',function(){setTimeout(g,4000)})})();</script>")
+           "['pointerdown','keydown','touchstart','mousemove','wheel'].forEach(function(e){addEventListener(e,g,{once:true,passive:true})});"
+           "addEventListener('load',function(){setTimeout(g,10000)})})();</script>")
     html, n = re.subn(r"<script>\(function\(w,d,s,l,i\).*?</script>", lambda m: gtm, html, count=1, flags=re.S)
     assert n == 1, "no encontré el código de Tag Manager"
     # sitio.js con versión en la URL: se puede guardar en caché un año sin servir uno viejo.
