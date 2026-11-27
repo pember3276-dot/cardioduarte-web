@@ -394,12 +394,63 @@ ExpiresByType application/javascript "access plus 1 month"
 ExpiresByType image/webp "access plus 6 months"
 ExpiresByType image/jpeg "access plus 6 months"
 ExpiresByType image/png "access plus 6 months"
+ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
+
+AddType font/woff2 .woff2
 
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml application/xml
 </IfModule>
 """
+
+
+# --- Velocidad (PageSpeed): solo en la web oficial ---
+# assets/fonts: Inter y Geist (OFL) de Google Fonts, recortadas a latín y pesos 400-600 con fontTools.
+FUENTES = ("@font-face{font-family:'Geist';font-style:normal;font-weight:400 600;font-display:swap;"
+           "src:url(/assets/fonts/geist-latin.woff2) format('woff2')}"
+           "@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;"
+           "src:url(/assets/fonts/inter-latin.woff2) format('woff2')}")
+
+
+def css_en_linea():
+    """CSS de la web en un solo bloque, sin comentarios, con rutas absolutas."""
+    import re
+    css = ""
+    for c in ("comun.css", "opcion-1.css"):
+        css += (ROOT / "assets/css" / c).read_text(encoding="utf-8")
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s*\n\s*", "", css)
+    css = css.replace("../img/logo-corazon.png", "/assets/img/logo-marca.png").replace("../img/", "/assets/img/")
+    return FUENTES + css
+
+
+def optimizar(html, css):
+    """Quita lo que bloquea el primer pintado: fuentes de Google, hojas de estilo externas y Tag Manager."""
+    import re
+    pre = ('<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
+           '<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
+           f"<style>{css}</style>")
+    html, n = re.subn(r'<link rel="preconnect" href="https://fonts\.googleapis\.com">\n'
+                      r'<link rel="preconnect" href="https://fonts\.gstatic\.com" crossorigin>\n'
+                      r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/[^"]*">\n'
+                      r'<link rel="stylesheet" href="[^"]*comun\.css">\n'
+                      r'<link rel="stylesheet" href="[^"]*opcion-1\.css">', lambda m: pre, html)
+    assert n == 1, "no encontré los <link> de fuentes y CSS"
+    # Tag Manager (y con él GA4) se carga con la primera interacción o 4 s después de cargar la página.
+    gtm = ("<script>window.dataLayer=window.dataLayer||[];(function(){var c=0;function g(){if(c)return;c=1;"
+           "dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});var j=document.createElement('script');j.async=true;"
+           f"j.src='https://www.googletagmanager.com/gtm.js?id={datos.GTM_ID}';document.head.appendChild(j)}}"
+           "['scroll','pointerdown','keydown','touchstart','mousemove'].forEach(function(e){addEventListener(e,g,{once:true,passive:true})});"
+           "addEventListener('load',function(){setTimeout(g,4000)})})();</script>")
+    html, n = re.subn(r"<script>\(function\(w,d,s,l,i\).*?</script>", lambda m: gtm, html, count=1, flags=re.S)
+    assert n == 1, "no encontré el código de Tag Manager"
+    html = re.sub(r'<link rel="icon" href="[^"]*logo-corazon\.png">', '<link rel="icon" href="/assets/img/logo-marca.png">', html)
+    # La foto principal (LCP) se pide desde el <head>, sin esperar a leer el cuerpo.
+    m = re.search(r'<source srcset="([^"]+\.webp)" type="image/webp"><img [^>]*fetchpriority="high"', html)
+    if m:
+        html = html.replace("<style>", f'<link rel="preload" as="image" href="{m.group(1)}" type="image/webp" fetchpriority="high">\n<style>', 1)
+    return html
 
 
 def generar(destino):
@@ -420,6 +471,9 @@ def generar(destino):
     out[f"{SLUG[CHQ]}/index.html"] = chequeo()
     out[f"{DOC_SLUG}/index.html"] = doctor()
     out["404.html"] = pagina_404()
+    if oficial:
+        css = css_en_linea()
+        out = {rel: optimizar(html, css) for rel, html in out.items()}
     for rel, html in out.items():
         f = base / rel
         f.parent.mkdir(parents=True, exist_ok=True)
@@ -440,7 +494,9 @@ def generar(destino):
             usados |= set(re.findall(r'assets/img/([\w.-]+)', html))
         for c in ("comun.css", "opcion-1.css"):
             usados |= set(re.findall(r"img/([\w.-]+)", (ROOT / "assets/css" / c).read_text()))
-        for rel in ["assets/css/comun.css", "assets/css/opcion-1.css", "assets/js/sitio.js"] + [f"assets/img/{n}" for n in sorted(usados)]:
+        usados |= set(re.findall(r"/assets/img/([\w.-]+)", css))
+        fuentes = ["assets/fonts/geist-latin.woff2", "assets/fonts/inter-latin.woff2"]
+        for rel in ["assets/js/sitio.js"] + fuentes + [f"assets/img/{n}" for n in sorted(usados)]:
             (base / rel).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, base / rel)
     datos.PROD = False
