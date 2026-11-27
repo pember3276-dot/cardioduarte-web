@@ -160,7 +160,7 @@ def page():
     <p class="lead">{esp_lead}</p></div>
   </div>
   <div class="team">
-    <article class="tm reveal">{pic("v-consulta", ALT["v-consulta"], pos="50% 80%")}<div class="tm-b"><span class="bchip">Cardiología</span><h3>{DOCTOR}</h3><p>Cardiólogo ecocardiografista</p></div></article>
+    <article class="tm reveal">{pic("v-consulta", ALT["v-consulta"], pos="50% 80%")}<div class="tm-b"><span class="bchip">Cardiología</span><h3>{DOCTOR}</h3><p>Cardiólogo ecocardiografista</p>{linkedin_link()}</div></article>
     <dl class="cred reveal">{cred}</dl>
   </div>
 </div></section>
@@ -193,12 +193,12 @@ def page():
     {chip("Ubicación y horario")}
     <h2>Le esperamos en El Poblado</h2>
     <ul class="ilist">
-      <li><i>{ic("pin", 18)}</i><div><b>Dirección</b><span>{DIR1}<br>{DIR2}<br>{DIR3}</span></div></li>
+      <li><i>{ic("pin", 18)}</i><div><b>Dirección</b><span>{dir_link(DIR1 + "<br>" + DIR2)}<br>{DIR3}</span>{como_llegar()}</div></li>
       <li><i>{ic("clock", 18)}</i><div><b>Horario</b><span>Lunes a viernes, 7:00 a. m. a 5:00 p. m. {tag("Validar")}</span></div></li>
       <li><i>{ic("phone", 18)}</i><div><b>WhatsApp y teléfono</b><span><a href="tel:+573187984545">{TEL}</a></span></div></li>
       <li><i>{ic("mail", 18)}</i><div><b>Correo</b><span><a href="mailto:{MAIL}">{MAIL}</a> · {WEB}</span></div></li>
     </ul>
-    <figure class="torre reveal">{pic("v-torre", ALT["v-torre"], pos="50% 45%")}<a class="btn btn-white" href="{MAPS}" target="_blank" rel="noopener"><span>Abrir en Google Maps</span><i>{ic("arrow", 14, 2.2)}</i></a></figure>
+    {mapa()}
   </div>
   <div class="formcard" id="cita"><span class="chip">{ic("star", 12, 2)}Solicitud de cita</span><h2>Déjenos sus datos y le contactamos</h2>
     {form("btn btn-primary btn-submit", f"<i>{PLUS}</i>")}</div>
@@ -215,10 +215,10 @@ def page():
 <footer class="foot"><div class="wrap">
   <div class="fcols">
     <div class="fbrand"><a class="brand" href="#inicio"><span class="logo"><i class="mark"></i></span><b>CARDIODUARTE</b></a>
-      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p></div>
+      <p>Cardiología y ecocardiografía. {DOCTOR}, cardiólogo ecocardiografista, en El Poblado, Medellín.</p>{linkedin_link("li-foot")}</div>
     <nav aria-label="Enlaces"><b>Enlaces</b>{nav}{f'<a href="{D.R}{DOC_SLUG}/">{DOCTOR}</a><a href="{D.R}{SLUG["Chequeo Ejecutivo Cardiovascular"]}/">Chequeo Ejecutivo</a>' if D.PROD else ""}<a href="#cita">Agendar cita</a></nav>
     <nav aria-label="Servicios"><b>Servicios</b>{"".join(f'<a href="{D.R + SLUG[s[1]] + "/" if D.PROD else "#servicios"}">{s[1]}</a>' for s in (SERVICIOS if D.PROD else SERVICIOS[:5]))}</nav>
-    <div><b>Visítenos</b><span>{DIR1}, {DIR2}, Medellín</span><a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
+    <div><b>Visítenos</b>{dir_link(DIR1 + ", " + DIR2 + ", Medellín")}{como_llegar()}<a href="tel:+573187984545">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><span>{WEB}</span></div>
   </div>
   {politica_details()}
   <p class="giant" aria-hidden="true">CARDIODUARTE</p>

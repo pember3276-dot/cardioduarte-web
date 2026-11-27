@@ -320,3 +320,21 @@ blockquote{margin:0;font:400 1.25rem/1.45 var(--fd);color:var(--head);padding-le
 .nf h1{font-size:clamp(2rem,4vw,3rem)}
 @media (max-width:900px){.split2{grid-template-columns:1fr}.ogrid{grid-template-columns:1fr 1fr}.ggrid-4{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.ogrid,.ggrid-4{grid-template-columns:1fr}}
+
+/* dirección -> Google Maps / Waze, mapa incrustado y LinkedIn */
+.addr-link{color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);text-underline-offset:3px}
+.addr-link:hover{text-decoration-color:currentColor}
+.ilist .addr-link{color:var(--muted);font-weight:400}
+.llegar{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.llegar a{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--navy)!important;font-size:.85rem;font-weight:600;text-decoration:none}
+.llegar a:hover{border-color:var(--teal)}
+.foot .llegar a{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);color:#fff!important}
+.foot .addr-link{color:rgba(255,255,255,.85)}
+.mapa{position:relative;margin:0;border-radius:26px;overflow:hidden;width:100%;aspect-ratio:16/10;background:#dfe9ef;border:1px solid var(--line)}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa .btn{position:absolute;left:14px;bottom:14px}
+.li-link,.li-foot{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;text-decoration:none;margin-top:6px}
+.li-link{color:#0A66C2}
+.li-foot{color:#fff}
+.li-link:hover,.li-foot:hover{text-decoration:underline}
+@media (max-width:560px){.mapa{aspect-ratio:4/3.4}}
