@@ -10,7 +10,7 @@
 :root{
   --navy:#164E78; --navy-d:#123F62; --teal:#26A69A; --teal-l:#BFE7E2; --teal-xl:#E4F5F3;
   --bg:#F2F7FA; --white:#FFFFFF; --ink:#263746; --head:#14324F; --muted:#5C6F80; --line:#DCE6EE;
-  --brand:#164E78; --field:#F2F7FA; --danger:#B3261E; --note:#E4F5F3; --note-ink:#164E78; --wa:#1F8F4E;
+  --brand:#164E78; --field:#F2F7FA; --danger:#B3261E; --note:#E4F5F3; --note-ink:#164E78; --wa:#177A41;
   --grad:linear-gradient(180deg,#EAF7F5 0%,#B5E3DC 100%);
   --fd:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
   --fb:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
