@@ -35,7 +35,7 @@
         var el = en.target;
         if (!el._rv) {                        // primera lectura, justo al observar
           el._rv = 1;
-          if (en.isIntersecting) io.unobserve(el); else el.classList.add('rv');
+          if (en.boundingClientRect.top < window.innerHeight) io.unobserve(el); else el.classList.add('rv');
         } else if (en.isIntersecting) { el.classList.add('in'); io.unobserve(el); }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
@@ -51,7 +51,7 @@
     var co = new IntersectionObserver(function (es) {
       es.forEach(function (en) {
         var el = en.target;
-        if (!el._ct) { el._ct = 1; if (en.isIntersecting) { co.unobserve(el); return; } }
+        if (!el._ct) { el._ct = 1; if (en.boundingClientRect.top < window.innerHeight) { co.unobserve(el); return; } }
         if (!en.isIntersecting) return;
         var to = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', t0 = null;
         co.unobserve(el);
